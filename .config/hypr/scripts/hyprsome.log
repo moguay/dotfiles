@@ -1,0 +1,112 @@
+hyprctl dispatch workspace 2 - window_class:"kitty"
+hyprctl dispatch workspace 1 - window_class:"kitty"
+hyprctl dispatch workspace 11 - window_class:"kitty"
+hyprctl dispatch workspace 12 - window_class:"kitty"
+rule_workspace=2
+hyprctl dispatch movetoworkspace 02 - window_class:"code-oss"
+rule_workspace=1
+hyprctl dispatch movetoworkspace 0cur - window_class:"vivaldi-stable"
+rule_workspace=1
+hyprctl dispatch movetoworkspace 0cur - window_class:"vivaldi-stable"
+rule_workspace=1
+hyprctl dispatch movetoworkspace 01 - window_class:"vivaldi-stable"
+rule_workspace=1
+hyprctl dispatch movetoworkspace 0cur - window_class:"vivaldi-stable"
+rule_workspace=1
+hyprctl dispatch movetoworkspace 0cur - window_class:"vivaldi-stable"
+rule_workspace=1
+hyprctl dispatch movetoworkspace 0cur - window_class:"vivaldi-stable"
+needed_screen=
+rule_workspace=1
+hyprctl dispatch movetoworkspace 0cur - window_class:"vivaldi-stable"
+needed_screen=cur
+rule_screen=1
+rule_workspace=11
+hyprctl dispatch movetoworkspace cur1 - window_class:"vivaldi-stable"
+needed_screen=cur
+rule_screen=1
+rule_workspace=11
+hyprctl dispatch movetoworkspace 11 - window_class:"vivaldi-stable"
+needed_screen=cur
+rule_screen=1
+rule_workspace=11
+hyprctl dispatch movetoworkspace 11 - window_class:"vivaldi-stable"
+return_workspace=1
+0
+return_workspace=1
+0
+return_workspace=1
+0
+return_workspace=1
+needed_screen=
+rule_workspace=1
+hyprctl dispatch movetoworkspace 01 - window_class:"vivaldi-stable"
+return_workspace=1
+0
+return_workspace=1
+0
+return_workspace=1
+0
+return_workspace=return_workspace
+return_workspace=0
+return_workspace=0
+return_workspace=2
+0
+return_workspace=2
+0
+return_workspace=2
+0
+return_workspace=2
+0
+return_workspace=2
+0
+return_workspace=2
+needed_screen=cur
+rule_screen=0
+rule_workspace=02
+hyprctl dispatch movetoworkspace 02 - window_class:"code-oss"
+hyprctl dispatch movetoworkspace 11 - window_class:"center-float-large"
+hyprctl dispatch movetoworkspace 11 - window_class:"center-float-large"
+hyprctl dispatch movetoworkspace 11 - window_class:"center-float-large"
+hyprctl dispatch movetoworkspace 11 - window_class:"center-float-large"
+return_workspace=
+return_workspace=
+return_workspace=
+return_workspace=1
+needed_screen=
+rule_workspace=1
+hyprctl dispatch movetoworkspace 01 - window_class:"vivaldi-stable"
+return_workspace=1
+needed_screen=cur
+rule_screen=1
+rule_workspace=11
+hyprctl dispatch movetoworkspace cur1 - window_class:"vivaldi-stable"
+return_workspace=1
+needed_screen=cur
+rule_screen=1
+rule_workspace=11
+hyprctl dispatch movetoworkspace cur1 - window_class:"vivaldi-stable"
+return_workspace=1
+needed_screen=cur
+rule_screen=1
+rule_workspace=11
+hyprctl dispatch movetoworkspace cur1 - window_class:"vivaldi-stable"
+return_workspace=1
+needed_screen=cur
+rule_screen=1
+rule_workspace=11
+hyprctl dispatch movetoworkspace cur1 - window_class:"vivaldi-stable"
+return_workspace=1
+needed_screen=cur
+rule_screen=1
+rule_workspace=11
+hyprctl dispatch movetoworkspace 11 - window_class:"vivaldi-stable"
+return_workspace=1
+needed_screen=cur
+rule_screen=1
+rule_workspace=11
+hyprctl dispatch movetoworkspace 11 - window_class:"vivaldi-stable"
+return_workspace=1
+needed_screen=
+rule_workspace=1
+hyprctl dispatch movetoworkspace 01 - window_class:"vivaldi-stable"

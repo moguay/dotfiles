@@ -1,0 +1,19 @@
+\.git     # .git repo
+\.gitignore
+
+\.github  # .github presentation
+
+CSV
+\.\#.+    # CSV conflict files / emacs lock files
+\.csvignore
+
+\.svn
+_darcs
+\.hg
+
+.+~       # emacs backup files
+\#.*\#    # emacs autosave files
+
+^/README.*
+^/LICENSE.*
+^/COPYING

@@ -1,0 +1,125 @@
+#!/usr/bin/bash
+
+app=$1
+
+if [ "$app" = "" ]; then
+	exit 1
+fi
+
+FOCUSED_MONITOR=$(~/.config/hypr/scripts/focused_monitor)
+source ~/.config/hypr/scripts/monitors
+
+case $app in
+"nemo")
+	if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+		hyprctl dispatch exec [workspace 4] nemo &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+		hyprctl dispatch exec [workspace 14] nemo &
+	else
+		nemo &
+	fi
+	;;
+"dolphin")
+	if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+		hyprctl dispatch exec [workspace 4] dolphin &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+		hyprctl dispatch exec [workspace 14] dolphin &
+	else
+		dolphin &
+	fi
+	;;
+"obsidian")
+	if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+		hyprctl dispatch exec [workspace 10] obsidian &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+		hyprctl dispatch exec [workspace 20] obsidian &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR3" ]; then
+		hyprctl dispatch exec [workspace 30] obsidian &
+	else
+		obsidian &
+	fi
+	;;
+"office")
+	if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+		hyprctl dispatch exec [workspace 10] libreoffice &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+		hyprctl dispatch exec [workspace 20] libreoffice &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR3" ]; then
+		hyprctl dispatch exec [workspace 30] libreoffice &
+	else
+		libreoffice &
+	fi
+	;;
+"kitty")
+	if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+		hyprctl dispatch exec [workspace 3] kitty &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+		hyprctl dispatch exec [workspace 13] kitty &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR3" ]; then
+		hyprctl dispatch exec "[workspace 24] kitty --class center-float-large" &
+	else
+		kitty &
+	fi
+	;;
+"nvim")
+	if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+		hyprctl dispatch exec [workspace 2] kitty nvim &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+		hyprctl dispatch exec [workspace 12] kitty nvim &
+	else
+		kitty nvim &
+	fi
+	;;
+"vscode")
+	if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+		hyprctl dispatch workspace 2 && code &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+		hyprctl dispatch workspace 12 && code &
+	else
+		code
+	fi
+	;;
+"codium")
+	if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+		hyprctl dispatch workspace 2 && codium &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+		hyprctl dispatch workspace 12 && codium &
+	else
+		codium
+	fi
+	;;
+"librewolf")
+	if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+		hyprctl dispatch workspace 1 && librewolf & # Had to to this because it didnt work the other way
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+		hyprctl dispatch workspace 11 && librewolf &
+	elif [ "$FOCUSED_MONITOR" = "$MONITOR3" ]; then
+		hyprctl dispatch workspace 25 && librewolf &
+	else
+		librewolf &
+	fi
+	;;
+"vivaldi")
+        if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+                hyprctl dispatch workspace 1 && vivaldi & # Had to to this because it didnt work the other way
+        elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+                hyprctl dispatch workspace 11 && vivaldi &
+        elif [ "$FOCUSED_MONITOR" = "$MONITOR3" ]; then
+                hyprctl dispatch workspace 25 && vivaldi &
+        else
+                vivaldi &
+        fi
+        ;;
+"firefox")
+        if [ "$FOCUSED_MONITOR" = "$MONITOR1" ]; then
+                hyprctl dispatch workspace 1 && firefox & # Had to to this because it didnt work the other way
+        elif [ "$FOCUSED_MONITOR" = "$MONITOR2" ]; then
+                hyprctl dispatch workspace 11 && firefox &
+        elif [ "$FOCUSED_MONITOR" = "$MONITOR3" ]; then
+                hyprctl dispatch workspace 25 && firefox &
+        else
+                firefox &
+        fi
+        ;;
+*) ;;
+esac

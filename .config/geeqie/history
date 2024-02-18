@@ -1,0 +1,14 @@
+#History lists
+
+[shortcuts]
+"Home[path]/home/guizmo"
+"Desktop[path]/home/guizmo/Desktop"
+"Collections[path]/home/guizmo/.local/share/geeqie/collections"
+
+[path_list]
+"/home/guizmo/.config/hypr/themes/luna/walls"
+
+[image_list]
+"/home/guizmo/.config/hypr/themes/luna/walls/arch-os.png"
+
+#end

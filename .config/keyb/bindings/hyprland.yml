@@ -1,0 +1,152 @@
+- name: Window Management 
+  keybinds:
+    - name: Move Window
+      key: Win + Mouse Left Button
+    - name: Resize Window
+      key: Win + Mouse Right Button
+    - name: Kill Active Window
+      key: Win + Q
+    - name: Focusing on Windows
+      key: Win + Arrow Keys / Vim Navigation Keys
+    - name: Moving Windows
+      key: Shift + Win + Arrow Keys / Vim Navigation Keys
+    - name: Toggle Floating Window
+      key: Win + A
+    - name: Toggle Pseudo Mode
+      key: Win + P
+    - name: Toggle Fullscreen Window
+      key: Win + F
+    - name: Toggle Window Split
+      key: Win + S
+    - name: Center Window
+      key: Win + C
+    - name: Resize Window
+      key: Win + M
+    - name: Minimize Window
+      key: Win + '
+    - name: Toggle Minimize Workspace
+      key: Win + Shift + '
+    - name: Toggle Listing Windows
+      key: Win + Shift + \
+
+- name: Group Management 
+  keybinds:
+    - name: Toggle Group
+      key: Win + G
+    - name: Change Active Group
+      key: Alt + Tab
+
+- name: Workspace Management 󱁐
+  keybinds:
+    - name: Moving to a specific Workspace
+      key: Win + 1-10
+    - name: Moving Windows to other specific Worskpace
+      key: Win + Shift + 1-10
+    - name: Moving Windows to other specific Workspace (Silent)
+      key: Win + Alt + 1-10
+    - name: Moving to the next Workspace (Mouse)
+      key: Win + Mouse Wheel Down / Up
+    - name: Moving to the next Worskpace (Keyboard)
+      key: Ctrl + Win + Left Key / Right Key
+
+- name: Apps 󰙵
+  keybinds:
+    - name: Launch Browser
+      key: Win + W
+    - name: Launch Editor / IDE
+      key: Win + Backspace / Win + Shift + Backspace
+    - name: Launch File Manager
+      key: Win + Shift + E
+    - name: Launch Terminal
+      key: Win + Enter
+    - name: Launch Floating Terminal
+      key: Win + Alt + Enter
+    - name: Launch Obsidian
+      key: Win + O
+    - name: Launch LibreOffice
+      key: Win + Shift + O
+    - name: Open Launcher
+      key: Win + TAB
+
+- name: Pickers 󰒉
+  keybinds:
+    - name: Color Picker
+      key: Win + Insert
+    - name: Wallpaper Picker
+      key: Win + Shift + W
+    - name: Clipboard Picker
+      key: Win + Y
+    - name: Screenshoot Picker
+      key: Alt + Insert
+    - name: Recording Picker
+      key: Win + Shift + R
+    - name: Keybindings Picker
+      key: Win + F1
+
+- name: Scratchpads 󰓩
+  keybinds:
+    - name: Toggle File Manager
+      key: Win + Enter
+    - name: Toggle Dotfiles Manager
+      key: Win + D
+    - name: Toggle Terminal
+      key: Win + \
+    - name: Toggle Btop
+      key: Win + B
+    - name: Toggle Blueman
+      key: Win + Shift + B
+    - name: Toggle GPT
+      key: Win + Shift + G
+    - name: Toggle Pavucontrol
+      key: Win + V
+
+- name: Audio 
+  keybinds:
+    - name: Play-Pause Song
+      key: Ctrl + Win + Mouse Extra Middle Button
+    - name: Play Previous Song
+      key: Ctrl + Win + Mouse Backward Button
+    - name: Play Next Song
+      key: Ctrl + Win + Mouse Forward Button
+    - name: Toggle Output Mute
+      key: Ctrl + Win + Mouse Extra Up Button
+    - name: Toggle Input Mute
+      key: Ctrl + Win + Mouse Extra Down Button
+    - name: Restart Audio
+      key: Ctrl + Win + V
+    - name: Output Volume Up
+      key: Ctrl + Win + Plus Sign
+    - name: Output Volume Down
+      key: Ctrl + Win + Minus Sign
+    - name: Input Volume Up
+      key: Win + Shift + Plus Sign
+    - name: Input Volume Down
+      key: Win + Shift + Minus Sign
+
+- name: Screenshots 󰹑
+  keybinds:
+    - name: Screenshoot Tool (Output)
+      key: Shift + Insert
+    - name: Screenshoot Tool (Selection)
+      key: Ctrl + Insert
+    - name: Screenshoot Tool (Window)
+      key: Win + Shift + Insert
+
+- name: Misc 
+  keybinds:
+    - name: Restart Waybar
+      key: Ctrl + Win + R
+    - name: Logout Hyprland
+      key: Ctrl + Win + M
+    - name: Random Wallpaper
+      key: Ctrl + Win + S
+    - name: Zoom
+      key: Win + Z
+    - name: Logout Menu
+      key: Win + Escape
+    - name: Toggle Fancy Stuff
+      key: Win + F12
+    - name: Open Hyprland Wiki
+      key: Win + Shift + F1
+    - name: Open Dotfiles Wiki
+      key: Ctrl + Win + F1

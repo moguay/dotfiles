@@ -1,0 +1,18 @@
+[Added Associations]
+image/png=vivaldi-stable.desktop;org.gnome.eog.desktop;
+text/css=code.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-3JA2H2.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-3JA2H2.desktop;
+
+[Default Applications]
+image/png=org.gnome.eog.desktop;
+message/rfc822=userapp-Thunderbird-3JA2H2.desktop
+text/css=code.desktop;
+text/html=vivaldi-stable.desktop
+x-scheme-handler/about=vivaldi-stable.desktop
+x-scheme-handler/gitkraken=GitKraken.desktop
+x-scheme-handler/http=vivaldi-stable.desktop
+x-scheme-handler/https=vivaldi-stable.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-3JA2H2.desktop
+x-scheme-handler/mid=userapp-Thunderbird-3JA2H2.desktop
+x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop

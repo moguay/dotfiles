@@ -1,0 +1,29 @@
+# PACMAN
+- name: Install Pacman Packages
+  pacman:
+    name:
+      # Audio
+      - easyeffects
+      - gst-plugins-base
+      - lsp-plugins
+      - qpwgraph
+
+      # Video
+      - obs-studio
+      - blender
+      - yt-dlp
+
+      # Image
+      - pinta
+      - krita
+
+- name: Install AUR Packages
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    name:
+      # Audio
+      - spicetify-cli
+      - spotify
+      - ytdlp-gui
