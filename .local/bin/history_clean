@@ -1,0 +1,229 @@
+#!/usr/bin/env python3
+
+import os
+import re
+import argparse
+import shutil
+from ruamel.yaml import YAML
+from collections import OrderedDict, Counter
+
+# Declare path variables
+HISTORY_FILE = os.path.expanduser("~/.local/share/fish/fish_history")
+TEMP_FILE = "/tmp/fish_history_clean"
+BACKUP_FILE = HISTORY_FILE + "_backup"
+EXCLUDED_CMDS_FILE = "/tmp/excluded_cmds"
+
+# List of sensitive patterns
+sensitive_patterns = [
+    r'ssh .*:.*@.*',  # SSH commands with usernames, passwords, or host information.
+    r'mysql -u .* -p.*',  # MySQL commands with username and password.
+    r'psql -U .* -W',  # PostgreSQL command with username and password.
+    r'ftp .*:.*@.*',  # FTP commands with usernames, passwords, or host information.
+    r'sftp .*:.*@.*',  # SFTP commands with usernames, passwords, or host information.
+    r'scp .*:.*@.*',  # SCP (Secure Copy Protocol) commands with usernames and source/destination directories.
+    r'rsync .*:.*@.*',  # RSYNC (Remote Sync) commands with usernames, passwords, or host information.
+    r'wget --user=.* --password=.*',  # Wget command with username and password specified in the URL.
+    r'curl -u .*:.*',  # Curl command with username and password specified as part of the authentication process.
+    r'gpg --passphrase .*',  # GPG (GNU Privacy Guard) commands with a passphrase to decrypt data or verify signatures.
+    r'openssl .* -pass .*',  # OpenSSL command with password specified as part of the encryption/decryption process.
+    r'openvpn --auth-user-pass .*',  # OpenVPN (Virtual Private Network) commands with authentication information.
+    r'iptables .* -j LOG',  # IPTables firewall command that logs traffic based on certain criteria.
+    r'ufw logging .*',  # UFW (Uncomplicated FireWall) log configuration for tracking incoming or outgoing connections.
+    r'john .* --wordlist=.*',  # John the Ripper password cracking tool with wordlist specified to brute-force passwords.
+    r'hydra -l .* -p .*',  # Hydra tool for network logins, with username and password combinations attempted.
+    r'nc .* -l -p .*',  # Netcat command used to create a listening port on the local machine or establish a connection to another server.
+    r'telnet .*',  # Telnet commands that transmit data in clear text, which can be intercepted and read by an attacker.
+    r'sshpass -p .* ssh .*',  # SSHpass command used to provide passwords for SSH connections without having the user enter them manually.
+    r'token=.*', r'api_key=.*', r'key=.*', r'aws_secret_access_key=.*',  # Commands with sensitive data (token, API key, secret keys) that can be used by attackers if intercepted or leaked.
+    r'azure_tenant_id=.*', r'gcloud .* --password=.*',  # Azure Tenant ID and Gcloud commands with password specified in the command line arguments.
+    r'doctl .* --access-token .*',  # DigitalOcean (DO) CLI commands with access token for authentication.
+    r'kubectl .* --token .*',  # Kubectl command with a bearer token used to authenticate requests to the Kubernetes API server.
+    r'htpasswd .* -c',  # htpasswd command for creating or modifying password files using bcrypt hashing algorithm.
+    r'pg_dump .* -W',  # pg_dump command with a password specified to backup PostgreSQL database.
+    r'mysqldump .* -p',  # mysqldump command used to back up MySQL databases, requiring the user to provide the database password.
+    r'mongoexport .* -p', r'mongoimport .* -p',  # MongoDB commands with username and password specified for exporting or importing data from a database.
+    r'tar .* -f',  # Tar command used to archive files, often compressing them into an unreadable format. However, the original file names are preserved and can be seen by attackers if they gain access to the archived data.
+    r'gzip .*', r'gunzip .*',  # Gzip/Gunzip commands used for compression of files with a password specified in some cases. The compressed data is encrypted using symmetric key encryption, which can be vulnerable to attacks such as timing or side-channel attacks if the password is weak or known by an attacker.
+    r'zip .* -P .*', r'unzip .* -P .*', # Zip command used for compression of files with a password specified in some cases. The compressed data is encrypted using symmetric key encryption, which can be vulnerable to attacks such as timing or side-channel attacks if the password is weak or known by an attacker.
+    r'aws s3 cp .*',  # AWS S3 commands that can expose sensitive bucket information.
+    ]
+
+yaml = YAML()
+
+def load_history():
+    # Load the history from the YAML file
+    yaml = YAML(typ='safe')
+
+    # Add a constructor for the '!dotfiles/' tag
+    def ignore_dotfiles(loader, node):
+        return None
+    yaml.constructor.add_constructor(u'!dotfiles/', ignore_dotfiles)
+
+    with open(HISTORY_FILE, 'r') as f:
+        return yaml.load(f)
+
+def save_history(history):
+    # Save the history to the YAML file
+    with open(HISTORY_FILE, 'w') as f:
+        yaml.dump(history, f)
+
+def clean_fish_history():
+    # Remove commands with erroneous paths
+    history = load_history()
+    new_history = []
+    excluded_cmds = []
+    for cmd in history:
+        # Split the command into arguments
+        args = cmd['cmd'].split()
+        # Check each argument to see if it's a path
+        for arg in args:
+            if arg.startswith('~'):
+                arg = os.path.expanduser(arg)  # Replace ~ with the actual home directory path
+            if arg.startswith('/') and not os.path.exists(arg):
+                print(f"Excluding command: {cmd['cmd']}")  # Print the excluded command
+                excluded_cmds.append(cmd['cmd'])  # Add the excluded command to the list
+                break
+        else:
+            new_history.append(cmd)
+    save_history(new_history)
+
+    # Write the excluded commands to the file
+    with open(EXCLUDED_CMDS_FILE, 'w') as f:
+        for cmd in excluded_cmds:
+            f.write(f"{cmd}\n")
+
+    # Print log messages
+    print(f"Removed erroneous from history. {len(new_history)} commands remaining.")
+    print(f"Found {len(excluded_cmds)} excluded commands.")
+
+def remove_duplicates():
+    # Remove duplicate commands
+    history = load_history()
+    history = [str(item) for item in history]  # Convert CommentedMap to str
+    history = list(OrderedDict.fromkeys(history))
+    save_history(history)
+
+    # Find excluded commands
+    excluded_cmds = [cmd for cmd in history if cmd.startswith('!')]
+
+    # Save excluded commands to EXCLUDED_CMDS_FILE
+    with open(EXCLUDED_CMDS_FILE, 'w') as file:
+        for cmd in excluded_cmds:
+            file.write(f"{cmd}\n")
+
+    # Print log messages
+    print(f"Removed duplicates from history. {len(history)} commands remaining.")
+    print(f"Found {len(excluded_cmds)} excluded commands.")
+
+def remove_unused():
+    # Remove commands that appear only once
+    history = load_history()
+    counter = Counter(cmd['cmd'] for cmd in history)
+    history = [cmd for cmd in history if counter[cmd['cmd']] > 1]
+    save_history(history)
+
+def backup_history():
+    # Backup the current history
+    shutil.copyfile(HISTORY_FILE, BACKUP_FILE)
+
+def restore_history():
+    # Restore the history from the backup
+    if os.path.exists(BACKUP_FILE):
+        shutil.copyfile(BACKUP_FILE, HISTORY_FILE)
+    else:
+        print("No backup file found.")
+
+def remove_sensitive():
+    # Remove sensitive commands
+    history = load_history()
+    new_history = []
+    for cmd in history:
+        if not any(re.search(pattern, cmd['cmd']) for pattern in sensitive_patterns):
+            new_history.append(cmd)
+        else:
+            print(f"Removed sensitive command: {cmd['cmd']}")  # Print the removed sensitive command
+    save_history(new_history)
+
+    # Find excluded commands
+    excluded_cmds = [cmd for cmd in new_history if cmd['cmd'].startswith('!')]
+
+    # Save excluded commands to EXCLUDED_CMDS_FILE
+    with open(EXCLUDED_CMDS_FILE, 'w') as file:
+        for cmd in excluded_cmds:
+            file.write(f"{cmd['cmd']}\n")
+
+    # Print log messages
+    print(f"Removed sensitive commands from history. {len(new_history)} commands remaining.")
+    print(f"Found {len(excluded_cmds)} excluded commands.")
+
+def remove_command(command_to_remove):
+    # Remove a specific command
+    history = load_history()
+    history = [cmd for cmd in history if command_to_remove not in cmd['cmd']]
+    save_history(history)
+
+def search_history(search_term):
+    # Search for a specific command in the history
+    history = load_history()
+    history = [cmd for cmd in history if search_term in cmd['cmd']]
+    for cmd in history:
+        print(cmd)
+
+def remove_pattern(pattern):
+    # Remove commands matching a specific pattern
+    history = load_history()
+    history = [cmd for cmd in history if pattern not in cmd['cmd']]
+    save_history(history)
+
+def display_help():
+    # Display the help message
+    print("Usage: history_clean.py [OPTION]")
+    print("Cleans fish history by removing erroneous paths.")
+    print("")
+    print("Options:")
+    print("  -h, --help         display this help message and exit")
+    print("  -c, --clean        clean fish history")
+    print("  -d, --duplicates   remove duplicate commands from history")
+    print("  -u, --unused       remove unused commands from history")
+    print("  -s, --sensitive    remove sensitive commands from history")
+    print("  -x, --remove       remove a specific command from history")
+    print("  -f, --find         find a specific command in history")
+    print("  -p, --pattern      remove commands matching a specific pattern from history")
+    print("")
+    print("  -b, --backup       backup current history")
+    print("  -r, --restore      restore history from backup")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--clean", help="clean fish history", action="store_true")
+    parser.add_argument("-d", "--duplicates", help="remove duplicate commands from history", action="store_true")
+    parser.add_argument("-u", "--unused", help="remove unused commands from history", action="store_true")
+    parser.add_argument("-b", "--backup", help="backup current history", action="store_true")
+    parser.add_argument("-r", "--restore", help="restore history from backup", action="store_true")
+    parser.add_argument("-s", "--sensitive", help="remove sensitive commands from history", action="store_true")
+    parser.add_argument("-x", "--remove", help="remove a specific command from history")
+    parser.add_argument("-f", "--find", help="find a specific command in history")
+    parser.add_argument("-p", "--pattern", help="remove commands matching a specific pattern from history")
+    args = parser.parse_args()
+
+    if not any(vars(args).values()):  # Check if no arguments are passed
+        display_help()  # Call the function to show help
+
+    if args.clean:
+        clean_fish_history()
+    if args.duplicates:
+        remove_duplicates()
+    if args.unused:
+        remove_unused()
+    if args.backup:
+        backup_history()
+    if args.restore:
+        restore_history()
+    if args.sensitive:
+        remove_sensitive()
+    if args.remove:
+        remove_command(args.remove)
+    if args.find:
+        search_history(args.find)
+    if args.pattern:
+        remove_pattern(args.pattern)

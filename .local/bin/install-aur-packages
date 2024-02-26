@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Lire chaque ligne du fichier aur-packages.txt
+for pkg in $(awk '{print $1}' /home/guizmo/.config/pacman/aur-packages.txt); do
+	# Exécuter la commande yay pour chaque paquet
+	yay -Syu --needed --noconfirm $pkg
+done

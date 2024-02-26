@@ -1,9 +1,17 @@
 #!/bin/bash
 
-#cat ~/.config/VSCodium/User/extensions.txt | while read extension || [[ -n $extension ]]; do
-#	vscodium --install-extension "$extension" --force
-#done
+if command -v vscodium >/dev/null 2>&1; then
+	cat ~/.config/VSCodium/User/extensions.txt | while read extension || [[ -n $extension ]]; do
+		vscodium --install-extension "$extension" --force
+	done
+else
+	echo "Le programme vscodium n'est pas installé."
+fi
 
-cat ~/.config/VSCodium/User/extensions.txt | while read extension || [[ -n $extension ]]; do
-	code --install-extension "$extension" --force
-done
+if command -v code >/dev/null 2>&1; then
+	cat ~/.config/VSCodium/User/extensions.txt | while read extension || [[ -n $extension ]]; do
+		code --install-extension "$extension" --force
+	done
+else
+	echo "Le programme vscode n'est pas installé."
+fi

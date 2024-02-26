@@ -62,7 +62,7 @@ alias ssh='kitten ssh'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #Display Pokemon
-pokemon-colorscripts --no-title -r 1,3,6
+#pokemon-colorscripts --no-title -r 1,3,6
 
 source /usr/share/doc/find-the-command/ftc.zsh
 

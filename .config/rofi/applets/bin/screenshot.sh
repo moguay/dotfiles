@@ -76,7 +76,8 @@ fi
 
 # notify and view screenshot
 notify_view() {
-	notify_cmd_shot='dunstify -u low --replace=699'
+	# notify_cmd_shot='dunstify -u low --replace=699'
+	notify_cmd_shot='notify-send -u low'
 	${notify_cmd_shot} "Copied to clipboard."
 	viewnior ${dir}/"$file"
 	if [[ -e "$dir/$file" ]]; then
@@ -94,7 +95,8 @@ copy_shot () {
 # countdown
 countdown () {
 	for sec in `seq $1 -1 1`; do
-		dunstify -t 1000 --replace=699 "Taking shot in : $sec"
+		pgrep -x dunst >/dev/null &&  dunstify -t 1000 --replace=699 "Taking shot in : $sec"
+		command -v notify-send >/dev/null && notify-send "Taking shot in : $sec" -t 1000
 		sleep 1
 	done
 }

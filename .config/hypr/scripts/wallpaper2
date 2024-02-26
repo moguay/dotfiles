@@ -19,10 +19,12 @@
 
 # Verificar si xdpyinfo e imagemagick están instalados
 if ! command -v xdpyinfo >/dev/null 2>&1; then
-	dunstify "Missing package" "Please install the xorg-xdpyinfo package to continue" -u critical
+	pgrep -x dunst >/dev/null && dunstify "Missing package" "Please install the xorg-xdpyinfo package to continue" -u critical
+	command -v notify-send >/dev/null && notify-send "Missing package" "Please install the xorg-xdpyinfo package to continue" -u critical
 	exit 1
 elif ! command -v convert >/dev/null 2>&1; then
-	dunstify "Missing package" "Please install the imagemagick package to continue" -u critical
+	pgrep -x dunst >/dev/null && dunstify "Missing package" "Please install the imagemagick package to continue" -u critical
+	command -v notify-send >/dev/null && notify-send "Missing package" "Please install the imagemagick package to continue" -u critical
 	exit 1
 fi
 

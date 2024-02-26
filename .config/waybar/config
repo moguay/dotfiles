@@ -21,6 +21,7 @@
     "modules-center": ["custom/music"],
     "modules-right": [
       "custom/updates",
+      "group/theme",
       "hyprland/language",
       "custom/weather",
       "clock",
@@ -44,6 +45,42 @@
           "Foot Server": "Terminal"
       }
     },
+    "group/theme": {
+      "orientation": "inherit",
+      "modules": [
+        "custom/theme",
+        "custom/wallchange",
+        "custom/wallbash"
+      ]
+    },
+    "custom/theme": {
+      "format": "🎨",
+      "exec": "echo ; echo 󰟡 switch theme",
+      "on-click": "~/.config/hypr/scripts/themeswitch.sh -n",
+      "on-click-right": "~/.config/hypr/scripts/themeswitch.sh -p",
+      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/themeselect.sh",
+      "interval" : 86400,
+      "tooltip": true
+    },
+    "custom/wallchange": {
+      "format": "",
+      "exec": "echo ; echo 󰆊 switch wallpaper",
+      "on-click": "~/.config/hypr/scripts/swwwallpaper.sh -n",
+      "on-click-right": "~/.config/hypr/scripts/swwwallpaper.sh -p",
+      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/swwwallselect.sh",
+      "interval" : 86400,
+      "tooltip": true
+    },
+    "custom/wallbash": {
+      "format": "[{icon} ]",
+      "return-type": "json",
+      "format-icons": {
+        "theme": "",
+        "wall": "󰃣"
+      },
+      "exec": "~/.config/hypr/scripts/wallbashtoggle-wb",
+      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/wallbashtoggle.sh"
+    },
     "custom/wf-recorder": {
       "format": "{}",
       "interval": "once",
@@ -54,14 +91,15 @@
       "signal": 8
     },
     "custom/updates": {
-      "format": "{} {icon}",
+      "format": "{}{icon}",
       "return-type": "json",
       "format-icons": {
-        "has-updates": "󱍷",
+        "pending-updates": " 󱍷",
+        "has-updates": " 󱍷",
         "updated": "󰂪"
       },
-      "exec-if": "which waybar-module-pacman-updates",
-      "exec": "waybar-module-pacman-updates",
+      "exec-if": "which ~/.local/bin/waybar-updates",
+      "exec": "~/.local/bin/waybar-updates",
       "on-click": "kitty --class center-float-large nice topgrade -k --only system",
       "on-click-middle": "kitty --class center-float-large nice pacseek",
       "on-click-right": "kitty --class center-float-large nice topgrade -k --no-self-update"
@@ -69,9 +107,9 @@
     "custom/arch": {
       "format": "  ",
       "tooltip": false,
-      "on-click": "sleep 0.1 && ~/.config/rofi/launchers/type-7/launcher.sh",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybindings",
-      "on-click-right": "wleave"
+      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
+      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",
+      "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/logoutlaunch.sh 2"
     },
     "custom/weather": {
       "exec": "python3 ~/.config/waybar/scripts/weather.py",
@@ -107,7 +145,7 @@
       "enable-bar-scroll": true,
       "format": "{icon}",
       "format-icons": {
-        "1": "",
+        "1": " ",
         "2": "",
         "3": "🖵",
         "4": "",
@@ -278,9 +316,9 @@
     "custom/arch": {
       "format": "  ",
       "tooltip": false,
-      "on-click": "sleep 0.1 && ~/.config/rofi/launchers/type-7/launcher.sh",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybindings",
-      "on-click-right": "wleave"
+      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
+      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",
+      "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/logoutlaunch.sh 2"
     },
     "custom/notifications": {
       "tooltip": false,
@@ -396,9 +434,9 @@
     "custom/arch": {
       "format": "  ",
       "tooltip": false,
-      "on-click": "sleep 0.1 && ~/.config/rofi/launchers/type-7/launcher.sh",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybindings",
-      "on-click-right": "wleave"
+      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
+      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",
+      "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/logoutlaunch.sh 2"
     },
     "custom/notifications": {
       "tooltip": false,

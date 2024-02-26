@@ -11,8 +11,8 @@ pypr &
 swaync &
 
 # Wallpaper Backend
-swww init
-"$scripts"/wallpaper random &
+exec "$scripts/swwwallpaper.sh" &  # wallpaper daemon
+exec "$scripts/swwwallrandom.sh" & # wallpaper random
 
 # Bar
 waybar &

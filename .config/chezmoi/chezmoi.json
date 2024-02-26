@@ -1,0 +1,6 @@
+{
+    "sourceDir": "~/dotfiles",
+    "git": {
+        "autoPush": true
+    }
+}
