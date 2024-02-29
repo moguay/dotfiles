@@ -1,5 +1,5 @@
-0|Catppuccin-Macchiato|Catppuccin.catppuccin-vsc~Catppuccin Macchiato|~/.config/swww/Catppuccin-Macchiato/4x-Fantasy-Landscape.png
-1|Catppuccin-Mocha|Catppuccin.catppuccin-vsc~Catppuccin Mocha|~/.config/swww/Catppuccin-Mocha/4x-rain_world1.png
+0|Catppuccin-Macchiato|Catppuccin.catppuccin-vsc~Catppuccin Macchiato|~/.config/swww/Catppuccin-Macchiato/4x-anime-girl-2.png
+1|Catppuccin-Mocha|Catppuccin.catppuccin-vsc~Catppuccin Mocha|~/.config/swww/Catppuccin-Mocha/4x-rain_world3.png
 0|Catppuccin-Latte|Catppuccin.catppuccin-vsc~Catppuccin Latte|~/.config/swww/Catppuccin-Latte/4x-rocket_launch.png
 0|Decay-Green|decaycs.decay~Decayce|~/.config/swww/Decay-Green/moments_before_desk.png
 0|Rose-Pine|mvllow.rose-pine~Rosé Pine|~/.config/swww/Rose-Pine/mountain_dragon_pink.jpg

@@ -46,9 +46,23 @@
   padding: 0 10px;
   margin: 2px 4px 5px 4px;
   border-radius: 10px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
   box-shadow: 3px 3px 2px 0px #181926;
   border: 2px solid rgba(183, 189, 248, 0.4);
   background-clip: padding-box;
+}
+
+#custom-arch{
+  padding: 0;
+  /* padding-right: 15px; */
+  font-size: 25px;
+  color: peru;
+  margin: 0px 4px 0px 0px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 5px;
 }
 
 /* Themes */
@@ -104,6 +118,8 @@ window#waybar.hidden {
   margin: 2px 4px 5px 4px;
   box-shadow: 3px 3px 2px 0px #181926;
   border-radius: 10px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
   background-clip: padding-box;
 }
 
@@ -186,6 +202,8 @@ window#waybar.hidden {
   margin: 2px 4px 5px 4px;
   box-shadow: 3px 3px 2px 0px #181926;
   border-radius: 10px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
   background-clip: padding-box;
 }
 

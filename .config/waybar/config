@@ -96,7 +96,7 @@
       "format-icons": {
         "pending-updates": " 󱍷",
         "has-updates": " 󱍷",
-        "updated": "󰂪"
+        "updated": " 󰂪 "
       },
       "exec-if": "which ~/.local/bin/waybar-updates",
       "exec": "~/.local/bin/waybar-updates",
@@ -105,7 +105,7 @@
       "on-click-right": "kitty --class center-float-large nice topgrade -k --no-self-update"
     },
     "custom/arch": {
-      "format": "  ",
+      "format": "   ",
       "tooltip": false,
       "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
       "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",

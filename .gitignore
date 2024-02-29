@@ -1,12 +1,12 @@
 .config/ansible/collections/
-.config/ansible/galaxy_cache/
-.config/ansible/tmp/
 .config/BraveSoftware/
 .config/cfg_backups/
 .config/GitKraken/
 .config/LM Studio/
 .config/discord/
 .config/Code - OSS/
+.config/VSCodium/
+.config/WebCord/
 .config/heroic/
 .config/org.coolercontrol.coolercontrol/
 .config/rncbc.org/
@@ -68,5 +68,10 @@
 .config/eog/
 .config/dconf/
 .config/autostart/
-.config/vesktop/sessionData/
-.config/VSCodium/*Cache*/
+*sessionData/
+*cache*/
+*Cache*/
+*Storage*/
+tmp/
+
+.config/GIMP/

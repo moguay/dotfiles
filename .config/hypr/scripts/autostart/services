@@ -11,7 +11,7 @@ pypr &
 swaync &
 
 # Wallpaper Backend
-exec "$scripts/swwwallpaper.sh" &  # wallpaper daemon
+#exec "$scripts/swwwallpaper.sh" &  # wallpaper daemon
 exec "$scripts/swwwallrandom.sh" & # wallpaper random
 
 # Bar
@@ -34,11 +34,11 @@ wl-clip-persist --clipboard regular &
 wl-paste --watch cliphist store &
 
 # Polkit authentication
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec "$scripts/Polkit.sh" & # Polkit (Polkit Gnome / KDE)
 
 # Screen sharing and portals
-/usr/lib/xdg-desktop-portal-hyprland &
-/usr/lib/xdg-desktop-portal &
+exec "$scripts/portal" &
 # xwaylandvideobridge &
 
 # Audio

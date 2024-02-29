@@ -57,5 +57,5 @@ export button_rad=$(( hypr_border * 8 ))
 wlStyle=`envsubst < $wlTmplt`
 
 # launch wlogout
-wlogout -b $wlColms -c 0 -r 0 -m 0 --layout $wLayout --css <(echo "$wlStyle") --protocol layer-shell
+wlogout -b $wlColms -c 0 -r 0 -m 0 --layout $wLayout --css <(echo "$wlStyle") --protocol layer-shell --primary-monitor $(hyprctl -j monitors | jq '.[] | select(.focused==true) | .id')
 

@@ -3,9 +3,10 @@
 # Apps
 env LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify --disable-gpu &
 # discord &
-vesktop &
+#vesktop &
+webcord &
 thunderbird &
-obsidian &
+# obsidian &
 
 # Terminal Apps
 kitty --class btop btop &
