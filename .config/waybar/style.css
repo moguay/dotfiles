@@ -4,6 +4,8 @@
   min-height: 0;
 }
 
+@import "themes/theme.css";
+
 /* General Settings */
 #theme,
 #custom-monitor,
@@ -42,14 +44,14 @@
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.default {
-  background-color: #24273a;
+  background-color: @main-bg;
   padding: 0 10px;
   margin: 2px 4px 5px 4px;
   border-radius: 10px;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  box-shadow: 3px 3px 2px 0px #181926;
-  border: 2px solid rgba(183, 189, 248, 0.4);
+  box-shadow: 3px 3px 2px 0px @wb-hvr-fg;
+  border: 2px solid @wb-hvr-bg;
   background-clip: padding-box;
 }
 
@@ -76,11 +78,18 @@
   padding-right: 0px;
 }
 
+tooltip {
+  background: @main-bg;
+  color: @main-fg;
+  border-radius: 7px;
+  border-width: 0px;
+}
+
 /* Window */
 window#waybar {
-  color: #cad3f5;
-  background: transparent;
+  background: @bar-bg;
   color: #cdd6f4;
+  color: @main-fg;
 }
 
 window#waybar.hidden {
@@ -112,11 +121,11 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  background-color: #24273a;
-  border: 2px solid rgba(183, 189, 248, 0.4);
+  background-color: @main-bg;
+  border: 2px solid @wb-hvr-bg;
   padding: 0 10px;
   margin: 2px 4px 5px 4px;
-  box-shadow: 3px 3px 2px 0px #181926;
+  box-shadow: 3px 3px 2px 0px @wb-hvr-fg;
   border-radius: 10px;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -164,7 +173,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused:hover {
-  background-color: #24273a;
+  background-color: @main-bg;
 }
 
 #workspaces button.focused:hover label {
@@ -196,11 +205,11 @@ window#waybar.hidden {
 }
 
 #taskbar {
-  background-color: #24273a;
-  border: 2px solid rgba(183, 189, 248, 0.4);
+  background-color: @main-bg;
+  border: 2px solid @wb-hvr-bg;
   padding: 0 10px;
   margin: 2px 4px 5px 4px;
-  box-shadow: 3px 3px 2px 0px #181926;
+  box-shadow: 3px 3px 2px 0px @wb-hvr-fg;
   border-radius: 10px;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -248,7 +257,7 @@ window#waybar.hidden {
 }
 
 #taskbar button.focused:hover {
-  background-color: #24273a;
+  background-color: @main-bg;
 }
 
 #taskbar button.focused:hover label {
@@ -257,19 +266,19 @@ window#waybar.hidden {
 
 /* Individual Modules */
 #cpu {
-  background-color: #24273a;
+  background-color: @main-bg;
   color: #8aadf4;
   transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
 }
 
 #memory {
-  background-color: #24273a;
+  background-color: @main-bg;
   color: #a6da95;
   transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
 }
 
 #custom-notifications {
-  background-color: #24273a;
+  background-color: @main-bg;
   color: #eed49f;
 }
 
@@ -278,7 +287,7 @@ window#waybar.hidden {
 }
 
 #custom-updates {
-  background-color: #24273a;
+  background-color: @main-bg;
   color: #8bd5ca;
 }
 
@@ -287,12 +296,12 @@ window#waybar.hidden {
 }
 
 #custom-gpu-temp {
-  background-color: #24273a;
+  background-color: @main-bg;
   color: #f5a97f;
 }
 
 #custom-gpu-usage {
-  background-color: #24273a;
+  background-color: @main-bg;
   color: #8bd5ca;
 }
 
@@ -301,7 +310,7 @@ window#waybar.hidden {
 }
 
 #temperature {
-  background-color: #24273a;
+  background-color: @main-bg;
   color: #f5a97f;
 }
 
@@ -370,7 +379,7 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-  background-color: #24273a;
+  background-color: @main-bg;
   color: #f5bde6;
 }
 
@@ -409,7 +418,7 @@ window#waybar.hidden {
 }
 
 #network {
-  background-color: #24273a;
+  background-color: @main-bg;
   color: #8bd5ca;
 }
 
@@ -444,7 +453,7 @@ window#waybar.hidden {
 /* Animation Keyframes */
 @keyframes blink {
   to {
-    background-color: #24273a;
+    background-color: @main-bg;
     color: #e06c75;
   }
 }

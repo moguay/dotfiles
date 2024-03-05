@@ -40,7 +40,7 @@ while getopts "nps:t" option ; do
         export xtrans="outer" ;;
 
     s ) # set selected theme
-                ThemeSet="$OPTARG" ;;
+        ThemeSet="$OPTARG" ;;
 
     t ) # display tooltip
         echo ""
@@ -118,7 +118,6 @@ sed -i "/^color_scheme_path=/c\color_scheme_path=$ConfDir/qt5ct/colors/${ThemeSe
 IconSet=`awk -F "'" '$0 ~ /gsettings set org.gnome.desktop.interface icon-theme/{print $2}' $ConfDir/hypr/themes/${ThemeSet}.conf`
 sed -i "/^icon_theme=/c\icon_theme=${IconSet}" $ConfDir/qt5ct/qt5ct.conf
 
-
 # qt6ct
 echo "Setting qt6ct theme: ${ThemeSet}"
 sed -i "/^color_scheme_path=/c\color_scheme_path=$ConfDir/qt6ct/colors/${ThemeSet}.conf" $ConfDir/qt6ct/qt6ct.conf
@@ -133,7 +132,7 @@ sed -i "/^gtk-icon-theme-name=/c\gtk-icon-theme-name=${IconSet}" $ConfDir/gtk-3.
 
 # gtk4
 echo "Setting gtk4 theme: ${ThemeSet}"
-rm $ConfDir/gtk-4.0
+[ -L "$ConfDir/gtk-4.0" ] && rm "$ConfDir/gtk-4.0" || rm -rf "$ConfDir/gtk-4.0"
 ln -s /usr/share/themes/$ThemeSet/gtk-4.0 $ConfDir/gtk-4.0
 
 

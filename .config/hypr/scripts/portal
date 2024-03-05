@@ -1,8 +1,11 @@
-#!/usr/bin/bash
+#!/bin/bash
+# dotfiles/.config/hypr/scripts/portal
+# This script is used to start the xdg-desktop-portal-hyprland and xdg-desktop-portal
 
 sleep 1
-killall xdg-desktop-portal-hyprland
-killall xdg-desktop-portal
+killall -e xdg-desktop-portal-hyprland
+killall -e xdg-desktop-portal
 sleep 1
 /usr/lib/xdg-desktop-portal-hyprland &
+sleep 2
 /usr/lib/xdg-desktop-portal &

@@ -1,6 +1,6 @@
 @define-color bar-bg rgba(0, 0, 0, 0);
 
-@define-color main-bg #475437;
+@define-color main-bg rgba(71, 84, 55, 0.6);
 @define-color main-fg #b5cc97;
 
 @define-color wb-act-bg #668f31;

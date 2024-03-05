@@ -3,7 +3,7 @@
 pkill -x rofi && exit
 ConfDir="${XDG_CONFIG_HOME:-$HOME/.config}"
 keyConfDir="$ConfDir/hypr"
-keyConf="$keyConfDir/hyprland.conf $keyConfDir/configs/binds.conf $keyConfDir/userprefs.conf  $*"
+keyConf="$keyConfDir/hyprland.conf $keyConfDir/configs/binds.conf $keyConfDir/userprefs.conf $keyConfDir/plugins/hych.conf $keyConfDir/plugins/hycov.conf $*"
 tmpMapDir="/tmp"
 tmpMap="$tmpMapDir/hyprdots-keybinds.jq"
 
@@ -28,7 +28,6 @@ icon_override="configuration {icon-theme: \"${icon_override}\";}"
 keyVars+="
 "
 keyVars+="HOME=$HOME"
-#  echo "$keyVars"
 
 substitute_vars() {
   local s="$1"
@@ -56,14 +55,16 @@ substitute_vars() {
 #   echo "$s"
 # }
 
+keyVars=$(substitute_vars "$keyVars")
 
+  # echo "$keyVars"
 
 # scrPath='~/.config/hypr/scripts'
 # comments=$(awk -v scrPath="$scrPath" -F ',' '!/^#/ && /bind*/ && $3 ~ /exec/ && NF && $4 !~ /^ *$/ {gsub(/\$scrPath/, scrPath, $4); print $4}' $keyConf | sed "s#\"#'#g" )
   comments=$(awk  -F ',' '!/^#/ && /bind*/ && $3 ~ /exec/ && NF && $4 !~ /^ *$/ { print $4}' $keyConf | sed "s#\"#'#g" )
   comments=$(substitute_vars "$comments" | awk -F'#' '{gsub(/^ */, "", $1); gsub(/ *$/, "", $1); split($2, a, " "); a[1] = toupper(substr(a[1], 1, 1)) substr(a[1], 2); $2 = a[1]; for(i=2; i<=length(a); i++) $2 = $2" "a[i]; gsub(/^ */, "", $2); gsub(/ *$/, "", $2); if (length($1) > 0) print "\""$1"\" : \""(length($2) > 0 ? $2 : $1)"\","}'|
   awk '!seen[$0]++')
-  # echo "$comments"
+#  echo "$comments"
 #  exit
 cat << EOF > $tmpMap
 # hyprdots-keybinds.jq
@@ -76,12 +77,30 @@ $comments
 "r-1" : "Relative Left",
 "e+1" : "Next",
 "e-1" : "Previous",
-"movewindow" : "Move window",
-"resizewindow" : "Resize window",
+"movewindow" : "Window - Move window",
+"resizewindow" : "Window - Resize window",
 "d" : "Down",
 "l" : "Left",
 "r" : "Right",
 "u" : "Up",
+};
+EOF
+
+  comments=$(awk  -F ',' '!/^#/ && /bind*/ && $3 !~ /exec/ && NF && $3 !~ /^ *$/ { print $3$4}' $keyConf | sed "s#\"#'#g" )
+  # echo "$comments"
+  comments=$(substitute_vars "$comments" | awk -F'#' '{gsub(/^ */, "", $1); gsub(/ *$/, "", $1); split($2, a, " "); a[1] = toupper(substr(a[1], 1, 1)) substr(a[1], 2); $2 = a[1]; for(i=2; i<=length(a); i++) $2 = $2" "a[i]; gsub(/^ */, "", $2); gsub(/ *$/, "", $2); if (length($1) > 0) print "\""$1"\" : \""(length($2) > 0 ? $2 : $1)"\","}'|
+  awk '!seen[$0]++')
+  # echo "$comments"
+#  exit
+cat << EOF >> $tmpMap
+# hyprdots-keybinds.jq
+def description_mapping: {  #? Derived from .dispatcher to parse scripts to be Readable
+#? Auto Generated Comment Conversion
+$comments
+#? Defaults
+" empty " :  "",
+"exec" : "",
+"global": ""
 };
 EOF
 
@@ -91,7 +110,7 @@ jsonData="$(hyprctl binds -j | jq -L "$tmpMapDir" -c '
 include "hyprdots-keybinds";
 
   def modmask_mapping: { #? Define mapping for modmask numbers represents bitmask
-    "64": " ",  #? SUPER  󰻀
+    "64": "󰻀 ",  #? SUPER  󰻀
 #    "32" : "ERROR:32",  #* Dont know
 #    "16": "Err:16",      #* Dont know
     "8": "ALT", 
@@ -105,10 +124,20 @@ include "hyprdots-keybinds";
     "mouse_down" : "󱕐",
     "mouse:272" : "󰍽",
     "mouse:273" : "󰍽",
+    "mouse:274" : "󰍽mid",
+    "mouse:275" : "󰍽side",
+    "mouse:276" : "󰍽side",
+    "mouse:280" : "󰍽?",
+    "mouse:281" : "󰍽?",
+    "mouse:282" : "󰍽?",
+    "61" : "!",
+    "code:107" : "Print",
     "UP" : "",
     "DOWN" : "",
     "LEFT" : "",
     "RIGHT" : "",
+    "XF86InputLowerVolume" : "󰢳",
+    "XF86InputRaiseVolume" : "󰢴",
     "XF86AudioLowerVolume" : "󰝞",
     "XF86AudioMicMute" : "󰍭",
     "XF86AudioMute" : "󰓄",
@@ -121,6 +150,26 @@ include "hyprdots-keybinds";
     "XF86MonBrightnessUp" : "󰃠",
     "switch:on:Lid Switch" : "󰛧",
     "backspace" : "󰁮"
+  };
+  def keycode_mapping: { #?Define mappings for .keycode to be readable symbols
+    "6" : "???",
+    "10" : "1",
+    "11" : "2",
+    "12" : "3",
+    "13" : "4",
+    "14" : "5",
+    "15" : "6",
+    "16" : "7",
+    "17" : "8",
+    "18" : "9",
+    "19" : "10",
+    "51" : "*",
+    "82" : "-",
+    "86" : "+",
+    "49" : "²",
+    "65" : "Space",
+    "61" : "!",
+    "107" : "Print",
   };
   def category_mapping: { #? Define Category Names, derive from Dispatcher
     "exec" : "Execute a Command:",
@@ -138,30 +187,30 @@ include "hyprdots-keybinds";
     "workspace" : "Navigate Workspace",
     "movetoworkspace" : "Navigate Workspace",
     "movetoworkspacesilent" : "Navigate Workspace",
-    
-
   };
-def arg_mapping: { #! Do not Change this used for Demo only... As this will change .args! will be fatal
+  def arg_mapping: { #! Do not Change this used for Demo only... As this will change .args! will be fatal
     "arg2": "mapped_arg2",
   };
 
-    def description_mapping: {  #? Derived from dispatcher and Gives Description for Dispatchers; Basically translates dispatcher.
-    "movefocus": "Move Focus",
-    "resizeactive": "Resize Active Floting Window",
-    "exit" : "End Hyprland Session",
-    "movetoworkspacesilent" : "Silently Move to Workspace",
-    "movewindow" : "Move Window",
-    "exec" : "" , #? Remove exec as execuatable will give the Description from separate function
-    "movetoworkspace" : "Move To Workspace:",
-    "workspace" : "Navigate to Workspace:",
-    "togglefloating" : "Toggle Floating",
-    "fullscreen" : "Toggle Fullscreen",
-    "togglegroup" : "Toggle Group",
-    "togglesplit" : "Toggle Split",
-    "togglespecialworkspace" : "Toggle Special Workspace",
-    "mouse" : "Use Mouse"
+  #   def description_mapping: {  #? Derived from dispatcher and Gives Description for Dispatchers; Basically translates dispatcher.
+  #   "movefocus": "window - Move Focus",
+  #   "resizeactive": "window - Resize Active Floting Window",
+  #   "exit" : "hypr - End Hyprland Session",
+  #   "movetoworkspacesilent" : "window - Silently Move to Workspace",
+  #   "movewindow" : "window - Move Window",
+  #   "exec" : "" , #? Remove exec as execuatable will give the Description from separate function
+  #   "movetoworkspace" : "window - Move To Workspace:",
+  #   "workspace" : "window - Navigate to Workspace:",
+  #   "togglefloating" : "window - Toggle Floating",
+  #   "fullscreen" : "window - Toggle Fullscreen",
+  #   "togglegroup" : "group - Toggle Group",
+  #   "togglesplit" : "group - Toggle Split",
+  #   "togglespecialworkspace" : "window - Toggle Special Workspace",
+  #   "mouse" : "Use Mouse",
+  #   "changegroupactive" : "group - Change Group",
+  #   "killactive" : "window - Kill Active"
 
-  };
+  # };
 
   def get_keys: #? Funtions to Convert modmask into Keys, There should be a beter math for this but Im lazy
     if . == 0 then
@@ -191,8 +240,9 @@ def arg_mapping: { #! Do not Change this used for Demo only... As this will chan
 
 .modmask |= (get_keys | ltrimstr(" ")) |
 .key |= (key_mapping[.] // .) |
+.keycode |= (keycode_mapping[. | tostring]) |
 
-.keybind = (.modmask | tostring // "") + (.key // "") |
+.keybind = (.modmask | tostring // "") + (.keycode // .key // "") |
 
 .flags = " locked=" + (.locked | tostring) + " mouse=" + (.mouse | tostring) + " release=" + (.release | tostring) + " repeat=" + (.repeat | tostring) + " non_consuming=" + (.non_consuming | tostring) |
 
@@ -205,38 +255,58 @@ if .keybind and .keybind != " " and .keybind != "" then .keybind |= (split(" ") 
   .arg |= (arg_mapping[.] // .) |
  #!    .executables |= gsub(".sh"; "") | #? Usefull soon
 
-  .executables |= (executables_mapping[.] // .) | 
-  .description |= (description_mapping[.] // .)    
+  .result_description += (description_mapping[$dispatcher + " " + $arg] // executables_mapping[$arg] // description_mapping[$dispatcher])
+  # .result_description += (description_mapping[$dispatcher + " " + $arg] // executables_mapping[$arg] // description_mapping[$dispatcher]) |
+  # .executables |= (executables_mapping[.] // .) | 
+  # .description |= (description_mapping[.] // .)
  
 ' #? <---- There is a '   do not delete this'
 )"
 
 #? Now we have the metadata we can Group it accordingly
-GROUP() { 
-  awk -F '!=!' '
-  {
-    category = $1
-    binds[category] = binds[category] ? binds[category] "\n" $0 : $0
-  }
+# GROUP() { 
+#   awk -F '!=!' '
+#   {
+#     category = $1
+#     binds[category] = binds[category] ? binds[category] "\n" $0 : $0
+#   }
 
-  END {
-    n = asorti(binds, b)
-    for (i = 1; i <= n; i++) {
-      print b[i]  # Print the header name
-      gsub(/\[.*\] =/, "", b[i])
-      split(binds[b[i]], lines, "\n")
-      for (j in lines) {
-        line = substr(lines[j], index(lines[j], "=") + 2)
-        print line
+#   END {
+#     n = asorti(binds, b)
+#     for (i = 1; i <= n; i++) {
+#       print b[i]  # Print the header name
+#       gsub(/\[.*\] =/, "", b[i])
+#       split(binds[b[i]], lines, "\n")
+#       for (j in lines) {
+#         line = substr(lines[j], index(lines[j], "=") + 2)
+#         print line
+#       }
+#       for (j = 1; j <= 68; j++) printf "━"
+#       printf "\n"
+#     }
+#   }'
+# }
+
+GROUP() {
+  awk 'BEGIN{
+      FS=" - "; OFS=" - "; last="NONE"
+    } {
+      if($1 != last) {
+        offset = 10
+        for (j = 1; j <= offset; j++) printf "━"
+        printf " %s ", toupper($1)
+        for (j = 1; j <= 68-length($1)-2 - offset; j++) printf "━"
+        printf "\n"
+        last=$1
       }
-      for (j = 1; j <= 68; j++) printf "━"
-      printf "\n"
-    }
-  }'
+      print $0
+    }'
 }
 
 #? Here we we format the output into a desirable format we want.
-DISPLAY() { awk -F '!=!' '{if ($0 ~ /=/ && $6 != "") printf "%-25s    >  %-30s\n", $5, $6; else if ($0 ~ /=/) printf "%-25s\n", $5; else print $0}' ;}
+# DISPLAY() { awk -F '!=!' '{if ($0 ~ /=/ && $6 != "") printf "%-25s    >  %-30s\n", $5, $6; else if ($0 ~ /=/) printf "%-25s\n", $5; else print $0}' ;}
+# DISPLAY() { awk -F '!=!' '{if ($0 ~ /=/ && $2 != "") printf "%-25s    >  %-30s\n", $6, $1; else if ($0 ~ /=/) printf "%-25s\n", $6; else print $0}' ;}
+DISPLAY() { awk -F '!=!' '{if ($0 ~ /=/ && $6 != "") printf "%-25s    >  %-30s\n", $6, $1; else if ($0 ~ /=/) printf "%-25s\n", $6; else print $0}' ;}
 
 #? Extra design use for distiction
 header="$(printf "%-35s %-1s %-20s\n" "󰌌 Keybinds" "󱧣" "Description")"
@@ -244,13 +314,19 @@ line="$(printf '%.0s━' $(seq 1 68) "")"
 
 
 # echo "$jsonData"
-metaData="$(echo "$jsonData"  |  jq -r '"\(.category) !=! \(.modmask) !=! \(.key) !=! \(.dispatcher) !=! \(.arg) !=! \(.keybind) !=! \(.description) \(.executables) !=! \(.flags)"' | tr -s ' ' | sort -k 1 )" #! this Part Gives extra laoding time as I don't have efforts to make all spaces on each class only 1
-#  echo "$metaData"
+#metaData="$(echo "$jsonData"  |  jq -r '"\(.category) !=! \(.modmask) !=! \(.key) !=! \(.dispatcher) !=! \(.arg) !=! \(.keybind) !=! \(.description) \(.executables) !=! \(.flags)"' | tr -s ' ' | sort -k 1 )" #! this Part Gives extra laoding time as I don't have efforts to make all spaces on each class only 1
+# metaData="$(echo "$jsonData"  |  jq -r '"\(.category) !=! \(.modmask) !=! \(.key) !=! \(.dispatcher) !=! \(.arg) !=! \(.keybind) !=! \(.description) \(.executables) !=! \(.flags)"' | tr -s ' ' | sort -k1,1 -k7,2)"
+# metaData="$(echo "$jsonData"  |  jq -r '"\(.category) !=! \(.description) \(.executables) !=! \(.modmask) !=! \(.key) !=! \(.dispatcher) !=! \(.arg) !=! \(.keybind) !=! \(.flags)"' | tr -s ' ' | sort -k1,1 -k2,2 -k3,3 -k4,4)"
+metaData="$(echo "$jsonData"  |  jq -r '"\(.result_description) !=! \(.modmask) !=! \(.key) !=! \(.dispatcher) !=! \(.arg) !=! \(.keybind) !=! \(.flags)"' | tr -s ' ' | sort -k1,1 -k2,2 -k3,3 -k4,4)"
 
+  # echo "$metaData"
+
+# display="$(echo "$metaData" | GROUP | DISPLAY )"
 display="$(echo "$metaData" | GROUP | DISPLAY )"
 
 # output=$(echo -e "${header}\n${line}\n${primMenu}\n${line}\n${display}")
-output=$(echo -e "${header}\n${line}\n${display}")
+# output=$(echo -e "${header}\n${line}\n${display}")
+output=$(echo -e "${header}\n${display}")
 
 #? will display on the terminal if rofi is not found
 if ! command -v rofi &> /dev/null

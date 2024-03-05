@@ -30,7 +30,7 @@ done | rofi -dmenu -theme-str "${r_override}" -config $RofiConf -select "${gtkTh
 # apply theme
 if [ ! -z $ThemeSel ] ; then
     "${ScrDir}/themeswitch.sh" -s $ThemeSel
-    pgrep -x dunst >/dev/null && dunstify "t1" -a " ${ThemeSel}" -i "~/.config/dunst/icons/hyprdots.png" -r 91190 -t 2200
-    command -v notify-send >/dev/null && notify-send " ${ThemeSel}" -i "~/.config/dunst/icons/hyprdots.png"
+    pgrep -x dunst >/dev/null && dunstify "t1" -a " ${ThemeSel}" -i ~/.config/dunst/icons/hyprdots.png -r 91190 -t 2200
+    command -v notify-send >/dev/null && notify-send "Theme ${ThemeSel} changed" -i ~/.config/dunst/icons/hyprdots.png
 fi
 

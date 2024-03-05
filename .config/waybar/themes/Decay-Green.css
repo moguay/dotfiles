@@ -6,5 +6,5 @@
 @define-color wb-act-bg #93cee9;
 @define-color wb-act-fg #1f2328;
 
-@define-color wb-hvr-bg #93cee9;
+@define-color wb-hvr-bg rgba(147, 206, 233, 0.6);
 @define-color wb-hvr-fg #1f2328;

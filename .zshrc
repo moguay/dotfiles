@@ -69,3 +69,5 @@ source /usr/share/doc/find-the-command/ftc.zsh
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+export PATH=$PATH:/home/guizmo/.spicetify

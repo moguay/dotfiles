@@ -137,6 +137,7 @@ fi
 number=$cur_workspace
 tens=$((number / 10))
 units=$((number % 10))
+[ $units -eq 0 ] && units=10 && tens=$((tens - 1))
 
 # Current workspace and screen
 cur_workspace=$units
@@ -166,7 +167,7 @@ if [ -z "$needed_workspace" ] || echo "$needed_workspace" | grep -qE '^[[:alpha:
 	new_workspace=$cur_workspace
 # Check if the parameter is a positive number with the + sign or - sign.
 elif [ "${needed_workspace#-}" != "$needed_workspace" ] || [ "${needed_workspace#+}" != "$needed_workspace" ]; then
-	new_workspace=$((cur_workspace + needed_workspace))
+	new_workspace=$(($cur_workspace + $needed_workspace))
 else
 	new_workspace=$needed_workspace
 fi
@@ -183,8 +184,8 @@ if [ "$verbose" -eq 1 ]; then
 	echo
 	echo "moving current window to screen:$new_screen workspace:$new_workspace dispacher_type:$dispacher_type"
 
-	echo "hyprctl dispatch $dispacher_type $new_screen$new_workspace - window_class:$active_class" >> $log_file
+	echo "hyprctl dispatch $dispacher_type $new_screen$new_workspace - window_class:$active_class" >>$log_file
 fi
 
 # Do the window move with syntax sceen:workspace like is defined in hypr workspace.conf [1..10] [11..20] [31..40]
-hyprctl dispatch "$dispacher_type" "$new_screen$new_workspace" && hyprctl dispatch centerwindow 1 && hyprctl dispatch resizeactive exact 75% 75% && hyprctl dispatch centerwindow 1 
+hyprctl dispatch "$dispacher_type" "$new_screen$new_workspace" && hyprctl dispatch centerwindow 1 && hyprctl dispatch resizeactive exact 75% 75% && hyprctl dispatch centerwindow 1

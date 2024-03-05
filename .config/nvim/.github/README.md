@@ -74,6 +74,7 @@
 <summary><b>🖌️ Color</b></summary>
 
 - [folke/twilight.nvim](https://dotfyle.com/plugins/folke/twilight.nvim)
+- [mvllow/modes.nvim](https://dotfyle.com/plugins/mvllow/modes.nvim)
 - [echasnovski/mini.hipatterns](https://dotfyle.com/plugins/echasnovski/mini.hipatterns)
 - [miversen33/sunglasses.nvim](https://dotfyle.com/plugins/miversen33/sunglasses.nvim)
 - [xiyaowong/nvim-transparent](https://dotfyle.com/plugins/xiyaowong/nvim-transparent)
@@ -85,6 +86,7 @@
 <summary><b>🎨 Colorscheme</b></summary>
 
 - [rockerBOO/boo-colorscheme-nvim](https://dotfyle.com/plugins/rockerBOO/boo-colorscheme-nvim)
+- [samharju/synthweave.nvim](https://dotfyle.com/plugins/samharju/synthweave.nvim)
 - [HoNamDuong/hybrid.nvim](https://dotfyle.com/plugins/HoNamDuong/hybrid.nvim)
 - [craftzdog/solarized-osaka.nvim](https://dotfyle.com/plugins/craftzdog/solarized-osaka.nvim)
 - [shaunsingh/moonlight.nvim](https://dotfyle.com/plugins/shaunsingh/moonlight.nvim)

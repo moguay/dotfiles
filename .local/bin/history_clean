@@ -4,7 +4,8 @@ import os
 import re
 import argparse
 import shutil
-from ruamel.yaml import YAML
+import yaml
+#from ruamel.yaml import YAML
 from collections import OrderedDict, Counter
 
 # Declare path variables
@@ -48,21 +49,21 @@ sensitive_patterns = [
     r'aws s3 cp .*',  # AWS S3 commands that can expose sensitive bucket information.
     ]
 
-yaml = YAML()
-
 def load_history():
-    # Load the history from the YAML file
-    yaml = YAML(typ='safe')
-
-    # Add a constructor for the '!dotfiles/' tag
-    def ignore_dotfiles(loader, node):
-        return None
-    yaml.constructor.add_constructor(u'!dotfiles/', ignore_dotfiles)
-
+    data = []
     with open(HISTORY_FILE, 'r') as f:
-        return yaml.load(f)
+                for line in f:
+            #line = line.replace('{', '{{').replace('}', '}}').replace(':', '\:')
+                    try:
+                        parsed_line = yaml.safe_load(line)
+                        data.append(parsed_line)
+                    except yaml.YAMLError as e:
+                        print(f"Erreur lors de la lecture de la ligne : {e}")
+    return data
 
 def save_history(history):
+    #    yaml = YAML()
+
     # Save the history to the YAML file
     with open(HISTORY_FILE, 'w') as f:
         yaml.dump(history, f)

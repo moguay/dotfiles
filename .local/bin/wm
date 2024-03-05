@@ -1,0 +1,5 @@
+#!/bin/sh
+# This script launches Hyprland
+
+# Launching Hyprland
+Hyprland 2> /tmp/Hyprland.log
