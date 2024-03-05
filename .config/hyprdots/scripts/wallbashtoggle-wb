@@ -5,8 +5,14 @@ import os
 import time
 import sys
 
+# Get the path of the current directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Build the file path
+file_path = os.path.join(current_dir, 'globalcontrol.sh')
+
 def check_variable():
-    with open(os.path.expanduser('/home/guizmo/.config/hypr/scripts/globalcontrol.sh'), 'r') as file:
+    with open(file_path, 'r') as file:
         lines = file.readlines()
         for line in lines:
             if "EnableWallDcol=" in line:

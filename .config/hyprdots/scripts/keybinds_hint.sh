@@ -1,13 +1,14 @@
 #!/usr/bin/env sh
 
 pkill -x rofi && exit
+ScrDir=`dirname "$(realpath "$0")"`
+source $ScrDir/globalcontrol.sh
+
 ConfDir="${XDG_CONFIG_HOME:-$HOME/.config}"
 keyConfDir="$ConfDir/hypr"
 keyConf="$keyConfDir/hyprland.conf $keyConfDir/configs/binds.conf $keyConfDir/userprefs.conf $keyConfDir/plugins/hych.conf $keyConfDir/plugins/hycov.conf $*"
 tmpMapDir="/tmp"
 tmpMap="$tmpMapDir/hyprdots-keybinds.jq"
-
-. $HOME/.config/hypr/scripts/globalcontrol.sh
 roDir="$ConfDir/rofi"
 roconf="$roDir/Keybinds_Hint.rasi"
 
@@ -28,6 +29,7 @@ icon_override="configuration {icon-theme: \"${icon_override}\";}"
 keyVars+="
 "
 keyVars+="HOME=$HOME"
+#  echo "$keyVars"
 
 substitute_vars() {
   local s="$1"
@@ -187,6 +189,8 @@ include "hyprdots-keybinds";
     "workspace" : "Navigate Workspace",
     "movetoworkspace" : "Navigate Workspace",
     "movetoworkspacesilent" : "Navigate Workspace",
+
+
   };
   def arg_mapping: { #! Do not Change this used for Demo only... As this will change .args! will be fatal
     "arg2": "mapped_arg2",

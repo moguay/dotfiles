@@ -97,58 +97,49 @@ fi
 
 
 # kitty
-echo "Setting kitty theme: ${ThemeSet}"
 ln -fs $ConfDir/kitty/themes/${ThemeSet}.conf $ConfDir/kitty/themes/theme.conf
 killall -SIGUSR1 kitty
 
 
 # rofi
-echo "Setting rofi theme: ${ThemeSet}"
 cp $ConfDir/rofi/themes/${ThemeSet}.rasi $ConfDir/rofi/themes/theme.rasi
 
 
 # kvantum QT
-echo "Setting kvantum theme: ${ThemeSet}"
 kvantummanager --set "${ThemeSet}"
 
 
 # qt5ct
-echo "Setting qt5ct theme: ${ThemeSet}"
 sed -i "/^color_scheme_path=/c\color_scheme_path=$ConfDir/qt5ct/colors/${ThemeSet}.conf" $ConfDir/qt5ct/qt5ct.conf
 IconSet=`awk -F "'" '$0 ~ /gsettings set org.gnome.desktop.interface icon-theme/{print $2}' $ConfDir/hypr/themes/${ThemeSet}.conf`
 sed -i "/^icon_theme=/c\icon_theme=${IconSet}" $ConfDir/qt5ct/qt5ct.conf
 
+
 # qt6ct
-echo "Setting qt6ct theme: ${ThemeSet}"
 sed -i "/^color_scheme_path=/c\color_scheme_path=$ConfDir/qt6ct/colors/${ThemeSet}.conf" $ConfDir/qt6ct/qt6ct.conf
 sed -i "/^icon_theme=/c\icon_theme=${IconSet}" $ConfDir/qt6ct/qt6ct.conf
 
 
 # gtk3
-echo "Setting gt3 theme: ${ThemeSet}"
 sed -i "/^gtk-theme-name=/c\gtk-theme-name=${ThemeSet}" $ConfDir/gtk-3.0/settings.ini
 sed -i "/^gtk-icon-theme-name=/c\gtk-icon-theme-name=${IconSet}" $ConfDir/gtk-3.0/settings.ini
 
 
 # gtk4
-echo "Setting gtk4 theme: ${ThemeSet}"
 [ -L "$ConfDir/gtk-4.0" ] && rm "$ConfDir/gtk-4.0" || rm -rf "$ConfDir/gtk-4.0"
 ln -s /usr/share/themes/$ThemeSet/gtk-4.0 $ConfDir/gtk-4.0
 
 
 # flatpak GTK
-echo "Setting flatpak GTK theme: ${ThemeSet}"
 flatpak --user override --env=GTK_THEME="${ThemeSet}"
 flatpak --user override --env=ICON_THEME="${IconSet}"
 
 
 # hyprland
-echo "Setting hyprland theme: ${ThemeSet}"
 ln -fs $ConfDir/hypr/themes/${ThemeSet}.conf $ConfDir/hypr/themes/theme.conf
 hyprctl reload
 
 
 # wallbash
-echo "Setting wallbash theme: ${ThemeSet}"
 "${ScrDir}/swwwallbash.sh" "$getWall"
 

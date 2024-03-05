@@ -1,4 +1,4 @@
-1|Catppuccin-Macchiato|Catppuccin.catppuccin-vsc~Catppuccin Macchiato|~/.config/swww/Catppuccin-Macchiato/4x-neon-dim.png
+1|Catppuccin-Macchiato|Catppuccin.catppuccin-vsc~Catppuccin Macchiato|~/.config/swww/Catppuccin-Macchiato/4x-anime-girl-2.png
 0|Catppuccin-Mocha|Catppuccin.catppuccin-vsc~Catppuccin Mocha|~/.config/swww/Catppuccin-Mocha/4x-43.png
 0|Catppuccin-Latte|Catppuccin.catppuccin-vsc~Catppuccin Latte|~/.config/swww/Catppuccin-Latte/gw204o9ga0ya1.png
 0|Decay-Green|decaycs.decay~Decayce|~/.config/swww/Decay-Green/moments_before_desk.png

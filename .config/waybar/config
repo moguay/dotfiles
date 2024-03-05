@@ -56,18 +56,18 @@
     "custom/theme": {
       "format": "🎨",
       "exec": "echo ; echo 󰟡 switch theme",
-      "on-click": "~/.config/hypr/scripts/themeswitch.sh -n",
-      "on-click-right": "~/.config/hypr/scripts/themeswitch.sh -p",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/themeselect.sh",
+      "on-click": "~/.config/hyprdots/scripts/themeswitch.sh -n",
+      "on-click-right": "~/.config/hyprdots/scripts/themeswitch.sh -p",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/themeselect.sh",
       "interval" : 86400,
       "tooltip": true
     },
     "custom/wallchange": {
       "format": "",
       "exec": "echo ; echo 󰆊 switch wallpaper",
-      "on-click": "~/.config/hypr/scripts/swwwallpaper.sh -n",
-      "on-click-right": "~/.config/hypr/scripts/swwwallpaper.sh -p",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/swwwallselect.sh",
+      "on-click": "~/.config/hyprdots/scripts/swwwallpaper.sh -n",
+      "on-click-right": "~/.config/hyprdots/scripts/swwwallpaper.sh -p",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/swwwallselect.sh",
       "interval" : 86400,
       "tooltip": true
     },
@@ -78,8 +78,8 @@
         "theme": "",
         "wall": "󰃣"
       },
-      "exec": "~/.config/hypr/scripts/wallbashtoggle-wb",
-      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/wallbashtoggle.sh"
+      "exec": "~/.config/hyprdots/scripts/wallbashtoggle-wb",
+      "on-click": "sleep 0.1 && ~/.config/hyprdots/scripts/wallbashtoggle.sh"
     },
     "custom/wf-recorder": {
       "format": "{}",
@@ -107,9 +107,9 @@
     "custom/arch": {
       "format": "   ",
       "tooltip": false,
-      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",
-      "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/logoutlaunch.sh 2"
+      "on-click": "sleep 0.1 && ~/.config/hyprdots/scripts/rofilaunch.sh d",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/keybinds_hint.sh",
+      "on-click-right": "sleep 0.1 && ~/.config/hyprdots/scripts/logoutlaunch.sh 2"
     },
     "custom/weather": {
       "exec": "python3 ~/.config/waybar/scripts/weather.py",
@@ -316,9 +316,9 @@
     "custom/arch": {
       "format": "   ",
       "tooltip": false,
-      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",
-      "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/logoutlaunch.sh 2"
+      "on-click": "sleep 0.1 && ~/.config/hyprdots/scripts/rofilaunch.sh d",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/keybinds_hint.sh",
+      "on-click-right": "sleep 0.1 && ~/.config/hyprdots/scripts/logoutlaunch.sh 2"
     },
     "custom/notifications": {
       "tooltip": false,
@@ -434,9 +434,9 @@
     "custom/arch": {
       "format": "   ",
       "tooltip": false,
-      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",
-      "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/logoutlaunch.sh 2"
+      "on-click": "sleep 0.1 && ~/.config/hyprdots/scripts/rofilaunch.sh d",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/keybinds_hint.sh",
+      "on-click-right": "sleep 0.1 && ~/.config/hyprdots/scripts/logoutlaunch.sh 2"
     },
     "custom/notifications": {
       "tooltip": false,

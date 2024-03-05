@@ -4,6 +4,8 @@
 config=$HOME/.config/hypr
 scripts=$config/scripts
 
+hyprdots=$HOME/.config/hyprdots
+
 # Plugins
 pypr &
 
@@ -11,8 +13,7 @@ pypr &
 swaync &
 
 # Wallpaper Backend
-#exec "$scripts/swwwallpaper.sh" &  # wallpaper daemon
-exec "$scripts/swwwallrandom.sh" & # wallpaper random
+exec "$hyprdots/scripts/swwwallrandom.sh" & # wallpaper random
 
 # Bar
 waybar &

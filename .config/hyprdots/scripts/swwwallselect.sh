@@ -28,20 +28,6 @@ x_monres=$(( x_monres * 17 / monitor_scale ))
 elem_border=$(( hypr_border * 3 ))
 r_override="element{border-radius:${elem_border}px;} listview{columns:6;spacing:100px;} element{padding:0px;orientation:vertical;} element-icon{size:${x_monres}px;border-radius:0px;} element-text{padding:20px;}"
 
-# Create cache dir if not exists
-if [ ! -d "${cacheDir}/${gtkTheme}" ]; then
-	mkdir -p "${cacheDir}/${gtkTheme}"
-fi
-
-# Convert images in directory and save to cache dir
-for images in "$wallPath"/*.{gif,jpg,jpeg,png,webp}; do
-	if [ -f "$images" ]; then
-		rfile=$(basename "$images")
-		if [ ! -f "${cacheDir}/${gtkTheme}/${rfile}" ]; then
-			convert -strip "$images" -thumbnail 500x500^ -gravity center -extent 500x500 "${cacheDir}/${gtkTheme}/${rfile}"
-		fi
-	fi
-done
 
 # launch rofi menu
 currentWall=`basename $fullPath`
