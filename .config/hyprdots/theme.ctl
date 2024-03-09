@@ -1,5 +1,5 @@
-0|Catppuccin-Macchiato|Catppuccin.catppuccin-vsc~Catppuccin Macchiato|~/.config/swww/Catppuccin-Macchiato/4x-anime-girl-2.png
-1|Catppuccin-Mocha|Catppuccin.catppuccin-vsc~Catppuccin Mocha|~/.config/swww/Catppuccin-Mocha/4x-17.png
+0|Catppuccin-Macchiato|Catppuccin.catppuccin-vsc~Catppuccin Macchiato|~/.config/swww/Catppuccin-Macchiato/4x-anime-girl-abyss.png
+1|Catppuccin-Mocha|Catppuccin.catppuccin-vsc~Catppuccin Mocha|~/.config/swww/Catppuccin-Mocha/4x-65b03cce55de3d5de4740932_dunes-07.png
 0|Catppuccin-Latte|Catppuccin.catppuccin-vsc~Catppuccin Latte|~/.config/swww/Catppuccin-Latte/gw204o9ga0ya1.png
 0|Decay-Green|decaycs.decay~Decayce|~/.config/swww/Decay-Green/moments_before_desk.png
 0|Rose-Pine|mvllow.rose-pine~Rosé Pine|~/.config/swww/Rose-Pine/mountain_dragon_pink.jpg

@@ -11,6 +11,7 @@ pypr &
 
 # Notification Daemon
 swaync &
+#dunst &
 
 # Wallpaper Backend
 exec "$hyprdots/scripts/swwwallrandom.sh" & # wallpaper random

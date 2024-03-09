@@ -7,14 +7,14 @@ RofiConf="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/themeselect.rasi"
 
 ctlLine=`grep '^1|' "$ThemeCtl"`
 if [ `echo $ctlLine | wc -l` -ne "1" ] ; then
-	echo "ERROR : $ThemeCtl Unable to fetch theme..."
-	exit 1
+    echo "ERROR : $ThemeCtl Unable to fetch theme..."
+    exit 1
 fi
 
 fullPath=$(echo "$ctlLine" | awk -F '|' '{print $NF}' | sed "s+~+$HOME+")
 wallPath=$(dirname "$fullPath")
 if [ ! -d "${wallPath}" ] && [ -d "${XDG_CONFIG_HOME:-$HOME/.config}/swww/${gtkTheme}" ] && [ ! -z "${gtkTheme}" ] ; then
-	wallPath="${XDG_CONFIG_HOME:-$HOME/.config}/swww/${gtkTheme}"
+    wallPath="${XDG_CONFIG_HOME:-$HOME/.config}/swww/${gtkTheme}"
 fi
 
 
@@ -33,13 +33,13 @@ r_override="element{border-radius:${elem_border}px;} listview{columns:6;spacing:
 currentWall=`basename $fullPath`
 RofiSel=$( find "${wallPath}" -maxdepth 1 -type f \( -iname "*.gif" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec basename {} \; | sort | while read rfile
 do
-	echo -en "$rfile\x00icon\x1f${cacheDir}/${gtkTheme}/${rfile}\n"
+    echo -en "$rfile\x00icon\x1f${cacheDir}/${gtkTheme}/${rfile}\n"
 done | rofi -dmenu -theme-str "${r_override}" -config "${RofiConf}" -select "${currentWall}")
 
 
 # apply wallpaper
 if [ ! -z "${RofiSel}" ] ; then
-	"${ScrDir}/swwwallpaper.sh" -s "${wallPath}/${RofiSel}"
+    "${ScrDir}/swwwallpaper.sh" -s "${wallPath}/${RofiSel}"
 	pgrep -x dunst >/dev/null && grep -x dunst >/dev/null && dunstify "t1" -a " ${RofiSel}" -i "${cacheDir}/${gtkTheme}/${RofiSel}" -r 91190 -t 2200
 	command -v notify-send >/dev/null && notify-send "Wallpaper Changed" -i "${cacheDir}/${gtkTheme}/${RofiSel}"
 fi

@@ -71,3 +71,11 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 export PATH=$PATH:/home/guizmo/.spicetify
+
+# pnpm
+export PNPM_HOME="/home/guizmo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

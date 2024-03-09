@@ -1,6 +1,0 @@
-cmd        "exo-open"
-oc-cmd     "evince;icon:evince"
-oc-cmd     "gimp;icon:gimp"
-depth      2
-
-open-parent-as-self

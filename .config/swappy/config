@@ -1,10 +1,3 @@
 [Default]
-save_dir=$XDG_SCREENSHOTS_HOME/PC/
-save_filename_format=captura-%Y-%m-%d-%s.png 
-show_panel=false
-line_size=5
-text_size=20
-text_font=jetbrainsmono nerd font
-paint_mode=brush
-early_exit=false
-fill_shape=false
+save_dir=/home/guizmo/Pictures/Screenshots
+save_filename_format=240307_20h48m38s_screenshot.png

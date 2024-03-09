@@ -1,61 +1,44 @@
 $HOME/.config/kitty/themes/Wall-Dcol.conf|${ScrDir}/wallbashkitty.sh
-foreground         #<wallbash_txt0>
-background         #<wallbash_pry0>
-cursor             #<wallbash_txt1> 
+foreground              #<wallbash_txt1>
+background              #<wallbash_pry1>
+selection_foreground    #<wallbash_pry1>
+selection_background    #<wallbash_txt1>
+cursor                  #<wallbash_pry4> 
+cursor_text_color       #<wallbash_txt4>
 
-active_tab_foreground     #<wallbash_pry0>
-active_tab_background     #<wallbash_pry2>
-inactive_tab_foreground   #<wallbash_pry2>
-inactive_tab_background   #<wallbash_pry0>
+active_tab_foreground     #<wallbash_pry1>
+active_tab_background     #<wallbash_pry3>
+inactive_tab_foreground   #<wallbash_pry3>
+inactive_tab_background   #<wallbash_pry1>
 
-active_border_color   #<wallbash_pry1>
-inactive_border_color #<wallbash_pry2>
-bell_border_color     #<wallbash_1xa4>
-
-    # Commands
-color2       #<wallbash_txt0>
- 
-    # Prompt
-color7       #<wallbash_pry2>
-color4       #<wallbash_2xa4>
-color0       #<wallbash_txt2>
-
-    # Color Overrides
-# color1       #<wallbash_txt1>
-# color3       #<wallbash_1xa3>
-# color5       #<wallbash_2xa2>
-# color6       #<wallbash_2xa3>
-# color8       #<wallbash_1xa2>
-# color9       #<wallbash_pry1>
-# color10      #<wallbash_2xa4>
-# color11      #<wallbash_1xa3>
-# color12      #<wallbash_2xa1>
-# color13      #<wallbash_2xa2>
-# color14      #<wallbash_2xa3>
-# color15      #<wallbash_pry2>
-
-# The 16 terminal colors
 # black
-color0 #494D64
-color8 #5B6078
+color0      #<wallbash_1xa1>
+color8      #<wallbash_1xa2>
+
 # red
-color1 #ED8796
-color9 #ED8796
+color1      #<wallbash_4xa9>
+color9      #<wallbash_4xa8>
+
 # green
-color2  #A6DA95
-color10 #A6DA95
+color2      #<wallbash_2xa9>
+color10     #<wallbash_2xa8>
+
 # yellow
-color3  #EED49F
-color11 #EED49F
+color3      #<wallbash_3xa9>
+color11     #<wallbash_3xa8>
+
 # blue
-color4  #8AADF4
-color12 #8AADF4
+color4      #<wallbash_1xa7>
+color12     #<wallbash_1xa7>
+
 # magenta
-color5  #F5BDE6
-color13 #F5BDE6
+color5      #<wallbash_2xa7>
+color13     #<wallbash_2xa7>
+
 # cyan
-color6  #8BD5CA
-color14 #8BD5CA
+color6      #<wallbash_3xa7>
+color14     #<wallbash_3xa7>
+
 # white
-color7  #B8C0E0
-color15 #A5ADCB
+color7      #<wallbash_4xa9>
+color15     #<wallbash_4xa8>

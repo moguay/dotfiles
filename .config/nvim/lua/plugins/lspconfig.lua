@@ -16,9 +16,6 @@ return {
       keys[#keys + 1] = { "<leader>clr", function() vim.lsp.buf.remove_workspace_folder() end, desc = "Remove workspace" }
       keys[#keys + 1] = { "<leader>cla", function() vim.lsp.buf.add_workspace_folder() end, desc = "Add workspace" }
       -- stylua: ignore end
-
-      keys[#keys + 1] = { "<leader>clh", vim.lsp.codelens.run, desc = "Run Code Lens" }
-      keys[#keys + 1] = { "<leader>cld", vim.lsp.codelens.refresh, desc = "Refresh Code Lens" }
     end,
     opts = {
       diagnostics = {
@@ -38,6 +35,9 @@ return {
         },
       },
       inlay_hints = {
+        enabled = nvim_0_10,
+      },
+      codelens = {
         enabled = nvim_0_10,
       },
       servers = {

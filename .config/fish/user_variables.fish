@@ -38,6 +38,7 @@ set -xg WINEPREFIX $XDG_DATA_HOME/wine
 set -xg NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -xg GTK2_RC_FILES $XDG_CONFIG_HOME/gtk-2.0/gtkrc
 
+
 # Path
 fish_add_path $XDG_BIN_HOME
 fish_add_path $XDG_BIN_HOME/color-scripts/
@@ -57,6 +58,7 @@ fish_add_path $BUN_INSTALL/bin
 fish_add_path $XDG_DATA_HOME/bob/nvim-bin
 fish_add_path $XDG_DATA_HOME/npm/bin
 fish_add_path $HOME/.yarn/bin
+fish_add_path $HOME/.local/share/pnpm
 
 # Editor
 set -xg EDITOR nvim

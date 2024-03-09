@@ -10,7 +10,7 @@ keyConf="$keyConfDir/hyprland.conf $keyConfDir/configs/binds.conf $keyConfDir/us
 tmpMapDir="/tmp"
 tmpMap="$tmpMapDir/hyprdots-keybinds.jq"
 roDir="$ConfDir/rofi"
-roconf="$roDir/Keybinds_Hint.rasi"
+roconf="$roDir/keybinds_hint.rasi"
 
 # read hypr theme border
 wind_border=$((hypr_border * 3))
