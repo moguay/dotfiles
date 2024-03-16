@@ -1,0 +1,7 @@
+[submodule "ohmyzsh/ohmyzsh.git"]
+  path = .oh-my-zsh
+  url = https://github.com/ohmyzsh/ohmyzsh.git
+
+[submodule "catppuccin/mc.git"]
+  path = .local/share/mc/skins/mc
+  url =https://github.com/catppuccin/mc.git
