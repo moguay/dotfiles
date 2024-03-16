@@ -304,7 +304,7 @@
 <details>
 <summary><b>📜 LSP</b></summary>
 
-- [simrat39/symbols-outline.nvim](https://dotfyle.com/plugins/simrat39/symbols-outline.nvim)
+- [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
 - [antosha417/nvim-lsp-file-operations](https://github.com/antosha417/nvim-lsp-file-operations)
 - [Wansmer/symbol-usage.nvim](https://dotfyle.com/plugins/Wansmer/symbol-usage.nvim)
 - [aznhe21/actions-preview.nvim](https://dotfyle.com/plugins/aznhe21/actions-preview.nvim)
@@ -337,6 +337,8 @@
 <summary><b>🔖 Marks</b></summary>
 
 - [ThePrimeagen/harpoon](https://dotfyle.com/plugins/ThePrimeagen/harpoon)
+- [otavioschwanck/arrow.nvim](https://dotfyle.com/plugins/otavioschwanck/arrow.nvim)
+- [cbochs/grapple.nvim](https://dotfyle.com/plugins/cbochs/grapple.nvim)
 - [tomasky/bookmarks.nvim](https://dotfyle.com/plugins/tomasky/bookmarks.nvim)
 
 </details>
@@ -513,6 +515,7 @@
 <summary><b>🔧 Utility</b></summary>
 
 - [zbirenbaum/neodim](https://dotfyle.com/plugins/zbirenbaum/neodim)
+- [malbertzard/inline-fold.nvim](https://dotfyle.com/plugins/malbertzard/inline-fold.nvim)
 - [dmmulroy/ts-error-translator.nvim](https://dotfyle.com/plugins/dmmulroy/ts-error-translator.nvim)
 - [creativenull/dotfyle-metadata.nvim](https://dotfyle.com/plugins/creativenull/dotfyle-metadata.nvim)
 - [rasulomaroff/reactive.nvim](https://dotfyle.com/plugins/rasulomaroff/reactive.nvim)

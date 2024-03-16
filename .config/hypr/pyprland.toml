@@ -7,6 +7,19 @@ unfocus = "hide"
 position = "1% 8%"
 lazy = true
 
+[scratchpads.pavucontrol3]
+command = "pavucontrol -t 3"
+unfocus = "hide"
+position = "1% 8%"
+lazy = true
+
+
+[scratchpads.pavucontrol4]
+command = "pavucontrol -t 4"
+unfocus = "hide"
+position = "1% 8%"
+lazy = true
+
 [scratchpads.terminal]
 command = "kitty --class scratchpad"
 excludes = ["dots"]

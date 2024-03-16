@@ -66,7 +66,7 @@ def format_time(time):
     return time.replace("00", "").zfill(2)
 
 
-def format_temp():
+def format_temp(temp):
     return (hour["FeelsLikeC"] + "°").ljust(3)
 
 
@@ -119,7 +119,7 @@ for i, day in enumerate(weather["weather"]):
                 continue
         data[
             "tooltip"
-        ] += f"{format_time(hour['time'])} {WEATHER_CODES[hour['weatherCode']]} {format_temp()} {hour['weatherDesc'][0]['value']}, {format_chances(hour)}\n"
+        ] += f"{format_time(hour['time'])} {WEATHER_CODES[hour['weatherCode']]} {format_temp(hour['FeelsLikeC'])} {hour['weatherDesc'][0]['value']}, {format_chances(hour)}\n"
 
 
 print(json.dumps(data))

@@ -1,0 +1,16 @@
+    "custom/updates": {
+        "format": "{}{icon}",
+        "return-type": "json",
+        "format-icons": {
+            "pending-updates": "󱍷",
+            "has-updates": "󱍷",
+            "updated": "󰂪 "
+        },
+        "rotate": ${r_deg},
+        "exec-if": "which ~/.local/bin/waybar-updates",
+        "exec": "~/.local/bin/waybar-updates",
+        "on-click": "kitty --class center-float-large nice topgrade -k --only system",
+        "on-click-middle": "kitty --class center-float-large nice pacseek",
+        "on-click-right": "kitty --class center-float-large nice topgrade -k --no-self-update"
+    },
+

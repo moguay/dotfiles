@@ -1,4 +1,4 @@
-$HOME/.config/waybar/themes/Wall-Dcol.css|${ScrDir}/wbarstylegen.sh
+$HOME/.config/waybar/themes/Wall-Dcol.css|${ScrDir}/wbarconfgen.sh
 @define-color bar-bg rgba(0, 0, 0, 0);
 @define-color main-bg #<wallbash_pry1>;
 @define-color main-fg #<wallbash_1xa8>;

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # wallpaper var
-EnableWallDcol=1
+EnableWallDcol=0
 ConfDir="${XDG_CONFIG_HOME:-$HOME/.config}"
 CloneDir="$HOME/Hyprdots"
 cacheDir="$HOME/.cache/hyprdots"
@@ -10,6 +10,7 @@ WallbashDir="${ConfDir}/hyprdots/wallbash"
 
 # theme var
 gtkTheme=`gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g"`
+gtkIcon=`gsettings get org.gnome.desktop.interface icon-theme | sed "s/'//g"`
 gtkMode=`gsettings get org.gnome.desktop.interface color-scheme | sed "s/'//g" | awk -F '-' '{print $2}'`
 
 # hypr var
@@ -40,15 +41,4 @@ get_aurhlpr()
     then
         aurhlpr="paru"
     fi
-}
-
-check(){
-    local Pkg_Dep=$(for PkgIn in "$@"; do ! pkg_installed $PkgIn && echo "$PkgIn"; done)
-
-if [ -n "$Pkg_Dep" ]; then echo -e "$0 Dependencies:\n$Pkg_Dep"
-    read -p "ENTER to install  (Other key: Cancel): " ans
-    if [ -z "$ans" ]; then get_aurhlpr ; $aurhlpr -S $Pkg_Dep
-    else echo "Skipping installation of packages" ;exit 1
-    fi
-fi
 }

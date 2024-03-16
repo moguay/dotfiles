@@ -79,12 +79,12 @@
 
       # Multimedia
       - celluloid
-      # - discord
       - geeqie
       - imagemagick
       - mpv
       - pavucontrol
       - wine
+      - winetricks
 
 # AUR
 - name: Create the `aur_builder` user
@@ -113,8 +113,7 @@
       - librewolf-bin
 
       # WM
-      - waybar-hyprland-cava-git
-      - waybar-module-pacman-updates-git
+      - waybar-cava
       - wleave-git
       - hyprlock-git
       - hypridle-git
@@ -128,7 +127,6 @@
       - nwg-look
       - pyprland
       - rofi-lboon-wayland
-      - rofi-file-browser-extended-git
 
       # Hooks
       - check-broken-packages-pacman-hook-git
@@ -149,7 +147,6 @@
       - topgrade
       - upscayl-bin
       - downgrade
-      # - betterdiscord-installer-bin
       - android-sdk-platform-tools
       - pika-backup
       - rar

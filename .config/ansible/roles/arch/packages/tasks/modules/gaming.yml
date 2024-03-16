@@ -19,7 +19,7 @@
     use: yay
     name:
       # Launchers
-      - heroic-games-launcher
+      - heroic-games-launcher-bin
       - atlauncher-bin
 
       # Emulators
@@ -34,7 +34,6 @@
 
       # Tools
       - proton-ge-custom-bin
-      - protontricks
       - vkbasalt
       - ludusavi
 

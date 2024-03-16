@@ -1,495 +1,193 @@
 * {
-  font-family: JetBrainsMono NF;
-  font-size: 13px;
-  min-height: 0;
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    /* font-size: px; */
+    min-height: 10px;
 }
 
 @import "themes/theme.css";
 
-/* General Settings */
-#theme,
-#custom-monitor,
-#cava,
-#custom-clipboard,
-#custom-notifications,
-#custom-arch,
-#custom-gpu-usage,
-#custom-updates,
-#mode,
-#cpu,
-#memory,
-#temperature,
-#custom-music,
-#custom-fans,
-#clock,
-#idle_inhibitor,
-#custom-wf-recorder,
-#pulseaudio,
-#backlight,
-#battery,
-#network,
-#tray,
-#custom-power-menu,
-#custom-updates,
-#language,
-#window,
-#custom-weather,
-#custom-weather.severe,
-#custom-weather.sunnyDay,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
-#custom-weather.default {
-  background-color: @main-bg;
-  padding: 0 10px;
-  margin: 2px 4px 5px 4px;
-  border-radius: 10px;
-  border-top-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  box-shadow: 3px 3px 2px 0px @wb-hvr-fg;
-  border: 2px solid @wb-hvr-bg;
-  background-clip: padding-box;
-}
-
-#custom-arch{
-  padding: 0;
-  /* padding-right: 15px; */
-  font-size: 25px;
-  color: peru;
-  margin: 0px 4px 0px 0px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 5px;
-}
-
-/* Themes */
-#custom-theme {
-  padding-right: 10px;
-}
-#custom-wallchange {
-  padding-right: 15px;
-}
-#custom-wallbash {
-  padding-right: 0px;
+window#waybar {
+    background: @bar-bg;
 }
 
 tooltip {
-  background: @main-bg;
-  color: @main-fg;
-  border-radius: 7px;
-  border-width: 0px;
-}
-
-/* Window */
-window#waybar {
-  background: @bar-bg;
-  color: #cdd6f4;
-  color: @main-fg;
-}
-
-window#waybar.hidden {
-  opacity: 0;
-}
-
-/* Workspaces */
-#workspaces, * {
-  font-size: 13px;
-}
-#workspaces button label {
-  color: #b7bdf8;
-  font-weight: bolder;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-}
-
-#workspaces button.active label {
-  color: #24273a;
-  font-weight: bolder;
-}
-
-#workspaces button.urgent {
-  background-color: #e06c75;
-}
-
-#workspaces button.urgent label {
-  color: #24273a;
-  font-weight: bolder;
-}
-
-#workspaces {
-  background-color: @main-bg;
-  border: 2px solid @wb-hvr-bg;
-  padding: 0 10px;
-  margin: 2px 4px 5px 4px;
-  box-shadow: 3px 3px 2px 0px @wb-hvr-fg;
-  border-radius: 10px;
-  border-top-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  background-clip: padding-box;
+    background: @main-bg;
+    color: @main-fg;
+    border-radius: 9px;
+    border-width: 0px;
 }
 
 #workspaces button {
-  background-color: transparent;
-  border-radius: 15px;
-  margin-right: 3px;
-  margin-left: 3px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  padding: 0 5px;
-  font-weight: bolder;
-  min-width: 20px;
-  color: #24273a;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+    box-shadow: none;
+	text-shadow: none;
+    padding: 0px;
+    border-radius: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 0px;
+    color: @main-fg;
+    animation: ws_normal 20s ease-in-out 1;
 }
 
 #workspaces button.active {
-  padding-right: 6px;
-  padding-left: 6px;
-  box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
-  padding-bottom: 3px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background: linear-gradient(
-    52deg,
-    rgba(139, 213, 202, 1) 0%,
-    rgba(138, 173, 244, 1) 30%,
-    rgba(183, 189, 248, 1) 48%,
-    rgba(198, 160, 246, 1) 77%,
-    rgba(238, 153, 160, 1) 100%
-  );
-  background-size: 400% 400%;
-  animation:gradient 15s ease infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-  color: #c678dd;
-  border-radius: 12px;
+    background: @wb-act-bg;
+    color: @wb-act-fg;
+    margin-left: 3px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-right: 3px;
+    animation: ws_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #workspaces button:hover {
-  background-color: #363a4f;
-}
-
-#workspaces button.focused:hover {
-  background-color: @main-bg;
-}
-
-#workspaces button.focused:hover label {
-  color: #cad3f5;
-}
-
-/* Taskbar */
-#taskbar, * {
-  font-size: 13px;
-}
-#taskbar button label {
-  color: #b7bdf8;
-  font-weight: bolder;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-}
-
-#taskbar button.active label {
-  color: #24273a;
-  font-weight: bolder;
-}
-
-#taskbar button.urgent {
-  background-color: #e06c75;
-}
-
-#taskbar button.urgent label {
-  color: #24273a;
-  font-weight: bolder;
-}
-
-#taskbar {
-  background-color: @main-bg;
-  border: 2px solid @wb-hvr-bg;
-  padding: 0 10px;
-  margin: 2px 4px 5px 4px;
-  box-shadow: 3px 3px 2px 0px @wb-hvr-fg;
-  border-radius: 10px;
-  border-top-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  background-clip: padding-box;
+    background: @wb-hvr-bg;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #taskbar button {
-  background-color: transparent;
-  border-radius: 15px;
-  margin-right: 3px;
-  margin-left: 3px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  padding: 0 5px;
-  font-weight: bolder;
-  min-width: 20px;
-  color: #24273a;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+    box-shadow: none;
+	text-shadow: none;
+    padding: 0px;
+    border-radius: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 0px;
+    color: @wb-color;
+    animation: tb_normal 20s ease-in-out 1;
 }
 
 #taskbar button.active {
-  padding-right: 6px;
-  padding-left: 6px;
-  box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
-  padding-bottom: 3px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background: linear-gradient(
-    52deg,
-    rgba(238, 153, 160, 1) 0%,
-    rgba(198, 160, 246, 1) 30%,
-    rgba(183, 189, 248, 1) 48%,
-    rgba(138, 173, 244, 1) 77%,
-    rgba(139, 213, 202, 1) 100%
-  );
-  background-size: 400% 400%;
-  animation:gradient 15s ease infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-  color: #c678dd;
-  border-radius: 3px;
+    background: @wb-act-bg;
+    color: @wb-act-color;
+    margin-left: 3px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-right: 3px;
+    animation: tb_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #taskbar button:hover {
-  background-color: #363a4f;
+    background: @wb-hvr-bg;
+    color: @wb-hvr-color;
+    animation: tb_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-#taskbar button.focused:hover {
-  background-color: @main-bg;
+#custom-arch,
+#backlight,
+#battery,
+#bluetooth,
+#cava,
+#custom-cliphist,
+#clock,
+#custom-cpuinfo,
+#cpu,
+#custom-gpuinfo,
+#custom-gpu,
+#idle_inhibitor,
+#custom-keybindhint,
+#language,
+#memory,
+#custom-monitorinfo,
+#custom-monitor,
+#mpris,
+#network,
+#custom-notifications,
+#custom-power,
+#pulseaudio,
+#custom-spotify,
+#submap,
+#taskbar,
+#custom-theme,
+#tray,
+#custom-updates,
+#custom-wallbash,
+#custom-wallchange,
+#custom-wbar,
+#custom-weather,
+#window,
+#workspaces,
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end,
+#custom-al_end,
+#custom-ar_end {
+    color: @main-fg;
+    background: @main-bg;
+    opacity: 1;
+    margin: 5px 0px 5px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+
+    /* border-top: 2px solid @main-fg; */
+    border-bottom: 2px solid @wb-hvr-bg;
 }
 
-#taskbar button.focused:hover label {
-  color: #cad3f5;
+#workspaces,
+#taskbar {
+    padding: 0px;
 }
 
-/* Individual Modules */
-#cpu {
-  background-color: @main-bg;
-  color: #8aadf4;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+#custom-r_end {
+    border-radius: 0px 25px 25px 0px;
+    margin-right: 10px;
+    padding-right: 3px;
 }
 
-#memory {
-  background-color: @main-bg;
-  color: #a6da95;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+#custom-l_end {
+    border-radius: 25px 0px 0px 25px;
+    margin-left: 10px;
+    padding-left: 3px;
 }
 
-#custom-notifications {
-  background-color: @main-bg;
-  color: #eed49f;
+#custom-sr_end {
+    border-radius: 0px;
+    margin-right: 10px;
+    padding-right: 3px;
 }
 
-#custom-weather {
-  color: #ee99a0;
+#custom-sl_end {
+    border-radius: 0px;
+    margin-left: 10px;
+    padding-left: 3px;
 }
 
-#custom-updates {
-  background-color: @main-bg;
-  color: #8bd5ca;
+#custom-rr_end {
+    border-radius: 0px 9px 9px 0px;
+    margin-right: 10px;
+    padding-right: 3px;
 }
 
-#custom-wf-recorder {
-  color: #ed8796;
+#custom-rl_end {
+    border-radius: 9px 0px 0px 9px;
+    margin-left: 10px;
+    padding-left: 3px;
 }
 
-#custom-gpu-temp {
-  background-color: @main-bg;
-  color: #f5a97f;
+#custom-ar_end {
+    border-radius: 0% 100% 15% 0%;
+    margin-right: 0px;
+    padding-right: 9px;
 }
 
-#custom-gpu-usage {
-  background-color: @main-bg;
-  color: #8bd5ca;
-}
-
-#custom-power-menu {
-  color: #e06c75;
-}
-
-#temperature {
-  background-color: @main-bg;
-  color: #f5a97f;
-}
-
-#window {
-  background: #b7bdf8;
-  background: linear-gradient(
-    52deg,
-    rgba(139, 213, 202, 1) 0%,
-    rgba(138, 173, 244, 1) 30%,
-    rgba(183, 189, 248, 1) 48%,
-    rgba(198, 160, 246, 1) 77%,
-    rgba(238, 153, 160, 1) 100%
-  );
-  background-size: 400% 400%;
-  animation:gradient 15s ease infinite;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.377);
-  font-weight: bold;
-  color: #1e2030;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-  border: none;
-}
-
-#temperature.critical {
-  background-color: #ed8796;
-  color: #1e2030;
-}
-
-#custom-music {
-  background: #b7bdf8;
-  background: linear-gradient(
-    52deg,
-    rgba(139, 213, 202, 1) 0%,
-    rgba(138, 173, 244, 1) 30%,
-    rgba(183, 189, 248, 1) 48%,
-    rgba(198, 160, 246, 1) 77%,
-    rgba(238, 153, 160, 1) 100%
-  );
-  background-size: 400% 400%;
-  animation:gradient 15s ease infinite;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.377);
-  font-weight: bold;
-  color: #1e2030;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-  border: none;
-}
-
-#custom-fans {
-  color: #98c379;
-}
-
-#clock {
-  color: #b7bdf8;
-}
-
-#idle_inhibitor {
-  color: #abb2bf;
-}
-
-#idle_inhibitor.activated {
-  background-color: #abb2bf;
-  color: #1e222a;
-}
-
-#language {
-  color: #8aadf4;
-}
-
-#pulseaudio {
-  background-color: @main-bg;
-  color: #f5bde6;
-}
-
-#pulseaudio.muted {
-  background-color: #ed8796;
-  color: #1e222a;
-}
-
-#pulseaudio.source-muted {
-  background-color: #f5a97f;
-  color: #1e222a;
-}
-
-#backlight {
-  color: #61afef;
-}
-
-#battery {
-  color: #98c379;
-}
-
-#battery.charging,
-#battery.plugged {
-  background-color: #98c379;
-  color: #1e222a;
-}
-
-#battery.critical:not(.charging) {
-  background-color: #e06c75;
-  color: #1e222a;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-#network {
-  background-color: @main-bg;
-  color: #8bd5ca;
-}
-
-#network.disconnected {
-  background-color: #ed8796;
-  color: #1e222a;
-}
-
-#custom-notifications {
-  padding-right: 10px;
-}
-
-#clock.cl2 {
-  background: #b7bdf8;
-  background: linear-gradient(
-    52deg,
-    rgba(139, 213, 202, 1) 0%,
-    rgba(138, 173, 244, 1) 30%,
-    rgba(183, 189, 248, 1) 48%,
-    rgba(198, 160, 246, 1) 77%,
-    rgba(238, 153, 160, 1) 100%
-  );
-  background-size: 400% 400%;
-  animation:gradient 15s ease infinite;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.377);
-  font-weight: bold;
-  color: #1e2030;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-  border: none;
-}
-
-/* Animation Keyframes */
-@keyframes blink {
-  to {
-    background-color: @main-bg;
-    color: #e06c75;
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes gradient_f {
-  0% {
-    background-position: 0% 200%;
-  }
-
-  50% {
-    background-position: 200% 0%;
-  }
-
-  100% {
-    background-position: 400% 200%;
-  }
-}
-
-@keyframes gradient_f_nh {
-  0% {
-    background-position: 0% 200%;
-  }
-
-  100% {
-    background-position: 200% 200%;
-  }
+#custom-al_end {
+    border-radius: 15% 0% 0% 100%;
+    margin-left: 0px;
+    padding-left: 9px;
 }

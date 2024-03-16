@@ -124,7 +124,7 @@ arch_package_manager = "yay"
 # aura_pacman_arguments = ""
 # garuda_update_arguments = ""
 
-# show_arch_news = true
+show_arch_news = true
 
 # trizen_arguments = "--devel"
 

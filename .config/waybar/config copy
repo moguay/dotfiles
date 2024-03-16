@@ -56,18 +56,18 @@
     "custom/theme": {
       "format": "🎨",
       "exec": "echo ; echo 󰟡 switch theme",
-      "on-click": "~/.config/hypr/scripts/themeswitch.sh -n",
-      "on-click-right": "~/.config/hypr/scripts/themeswitch.sh -p",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/themeselect.sh",
+      "on-click": "~/.config/hyprdots/scripts/themeswitch.sh -n",
+      "on-click-right": "~/.config/hyprdots/scripts/themeswitch.sh -p",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/themeselect.sh",
       "interval" : 86400,
       "tooltip": true
     },
     "custom/wallchange": {
       "format": "",
       "exec": "echo ; echo 󰆊 switch wallpaper",
-      "on-click": "~/.config/hypr/scripts/swwwallpaper.sh -n",
-      "on-click-right": "~/.config/hypr/scripts/swwwallpaper.sh -p",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/swwwallselect.sh",
+      "on-click": "~/.config/hyprdots/scripts/swwwallpaper.sh -n",
+      "on-click-right": "~/.config/hyprdots/scripts/swwwallpaper.sh -p",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/swwwallselect.sh",
       "interval" : 86400,
       "tooltip": true
     },
@@ -78,8 +78,8 @@
         "theme": "",
         "wall": "󰃣"
       },
-      "exec": "~/.config/hypr/scripts/wallbashtoggle-wb",
-      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/wallbashtoggle.sh"
+      "exec": "~/.config/hyprdots/scripts/wallbashtoggle-wb",
+      "on-click": "sleep 0.1 && ~/.config/hyprdots/scripts/wallbashtoggle.sh"
     },
     "custom/wf-recorder": {
       "format": "{}",
@@ -107,9 +107,9 @@
     "custom/arch": {
       "format": "   ",
       "tooltip": false,
-      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",
-      "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/logoutlaunch.sh 2"
+      "on-click": "sleep 0.1 && ~/.config/hyprdots/scripts/rofilaunch.sh d",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/keybinds_hint.sh",
+      "on-click-right": "sleep 0.1 && ~/.config/hyprdots/scripts/logoutlaunch.sh 2"
     },
     "custom/weather": {
       "exec": "python3 ~/.config/waybar/scripts/weather.py",
@@ -123,13 +123,13 @@
       "tooltip": false,
       "format": "{} {icon}",
       "format-icons": {
-        "notification": "<span foreground='red'><sup></sup></span>",
+        "notification": "<span foreground='white'><sup></sup></span>",
         "none": "",
-        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-notification": "<span foreground='white'><sup></sup></span>",
         "dnd-none": "",
-        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-notification": "<span foreground='white'><sup></sup></span>",
         "inhibited-none": "",
-        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-notification": "<span foreground='white'><sup></sup></span>",
         "dnd-inhibited-none": ""
       },
       "return-type": "json",
@@ -145,16 +145,16 @@
       "enable-bar-scroll": true,
       "format": "{icon}",
       "format-icons": {
-        "1": "<span foreground='red'><sup> 1</sup></span>",
-        "2": "<span foreground='red'><sup> 2</sup></span>",
-        "3": "🖵<span foreground='red'><sup>3</sup></span>",
-        "4": "<span foreground='red'><sup> 4</sup></span>",
-        "5": "<span foreground='red'><sup> 5</sup></span>",
-        "6": "🎜<span foreground='red'><sup>6</sup></span>",
-        "7": "<span foreground='red'><sup> 7</sup></span>",
-        "8": "<span foreground='red'><sup> 8</sup></span>",
-        "9": "<span foreground='red'><sup> 9</sup></span>",
-        "10": "<span foreground='red'><sup> 10</sup></span>"
+        "1": "<sup> 1</sup>",
+        "2": "<sup> 2</sup>",
+        "3": "🖵<sup>3</sup>",
+        "4": "<sup> 4</sup>",
+        "5": "<sup> 5</sup>",
+        "6": "🎜<sup>6</sup>",
+        "7": "<sup> 7</sup>",
+        "8": "<sup> 8</sup>",
+        "9": "<sup> 9</sup>",
+        "10": "<sup> 10</sup>"
       },
       "on-scroll-up": "hyprctl dispatch workspace r-1",
       "on-scroll-down": "hyprctl dispatch workspace r+1",
@@ -316,21 +316,21 @@
     "custom/arch": {
       "format": "   ",
       "tooltip": false,
-      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",
-      "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/logoutlaunch.sh 2"
+      "on-click": "sleep 0.1 && ~/.config/hyprdots/scripts/rofilaunch.sh d",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/keybinds_hint.sh",
+      "on-click-right": "sleep 0.1 && ~/.config/hyprdots/scripts/logoutlaunch.sh 2"
     },
     "custom/notifications": {
       "tooltip": false,
       "format": "{} {icon}",
       "format-icons": {
-        "notification": "<span foreground='red'><sup></sup></span>",
+        "notification": "<span foreground='white'><sup></sup></span>",
         "none": "",
-        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-notification": "<span foreground='white'><sup></sup></span>",
         "dnd-none": "",
-        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-notification": "<span foreground='white'><sup></sup></span>",
         "inhibited-none": "",
-        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-notification": "<span foreground='white'><sup></sup></span>",
         "dnd-inhibited-none": ""
       },
       "return-type": "json",
@@ -347,16 +347,16 @@
       "enable-bar-scroll": true,
       "format": "{icon}",
       "format-icons": {
-        "11": "<span foreground='red'><sup> 1</sup></span>",
-        "12": "<span foreground='red'><sup> 2</sup></span>",
-        "13": "🖵<span foreground='red'><sup>3</sup></span>",
-        "14": "<span foreground='red'><sup> 4</sup></span>",
-        "15": "<span foreground='red'><sup> 5</sup></span>",
-        "16": "🎜<span foreground='red'><sup>6</sup></span>",
-        "17": "<span foreground='red'><sup> 7</sup></span>",
-        "18": "<span foreground='red'><sup> 8</sup></span>",
-        "19": "<span foreground='red'><sup> 9</sup></span>",
-        "20": "<span foreground='red'><sup> 10</sup></span>"
+        "11": "<sup> 1</sup>",
+        "12": "<sup> 2</sup>",
+        "13": "🖵<sup>3</sup>",
+        "14": "<sup> 4</sup>",
+        "15": "<sup> 5</sup>",
+        "16": "🎜<sup>6</sup>",
+        "17": "<sup> 7</sup>",
+        "18": "<sup> 8</sup>",
+        "19": "<sup> 9</sup>",
+        "20": "<sup> 10</sup>"
       },
       "on-scroll-up": "hyprctl dispatch workspace r-1",
       "on-scroll-down": "hyprctl dispatch workspace r+1",
@@ -434,21 +434,21 @@
     "custom/arch": {
       "format": "   ",
       "tooltip": false,
-      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/rofilaunch.sh d",
-      "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/keybinds_hint.sh",
-      "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/logoutlaunch.sh 2"
+      "on-click": "sleep 0.1 && ~/.config/hyprdots/scripts/rofilaunch.sh d",
+      "on-click-middle": "sleep 0.1 && ~/.config/hyprdots/scripts/keybinds_hint.sh",
+      "on-click-right": "sleep 0.1 && ~/.config/hyprdots/scripts/logoutlaunch.sh 2"
     },
     "custom/notifications": {
       "tooltip": false,
       "format": "{} {icon}",
       "format-icons": {
-        "notification": "<span foreground='red'><sup></sup></span>",
+        "notification": "<span foreground='white'><sup></sup></span>",
         "none": "",
-        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-notification": "<span foreground='white'><sup></sup></span>",
         "dnd-none": "",
-        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-notification": "<span foreground='white'><sup></sup></span>",
         "inhibited-none": "",
-        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-notification": "<span foreground='white'><sup></sup></span>",
         "dnd-inhibited-none": ""
       },
       "return-type": "json",
@@ -464,16 +464,16 @@
       "enable-bar-scroll": true,
       "format": "{icon}",
       "format-icons": {
-        "21": "<span foreground='red'><sup> 1</sup></span>",
-        "22": "󰍨<span foreground='red'><sup> 2</sup></span>",
-        "23": "✉<span foreground='red'><sup> 3</sup></span>",
-        "24": "🖵<span foreground='red'><sup> 4</sup></span>",
-        "25": "<span foreground='red'><sup> 5</sup></span>",
-        "26": "<span foreground='red'><sup> 6</sup></span>",
-        "27": "<span foreground='red'><sup> 7</sup></span>",
-        "28": "<span foreground='red'><sup> 8</sup></span>",
-        "29": "<span foreground='red'><sup> 9</sup></span>",
-        "30": "<span foreground='red'><sup> 10</sup></span>"
+        "21": "<sup> 1</sup>",
+        "22": "󰍨<sup> 2</sup>",
+        "23": "✉<sup> 3</sup>",
+        "24": "🖵<sup> 4</sup>",
+        "25": "<sup> 5</sup>",
+        "26": "<sup> 6</sup>",
+        "27": "<sup> 7</sup>",
+        "28": "<sup> 8</sup>",
+        "29": "<sup> 9</sup>",
+        "30": "<sup> 10</sup>"
       },
       "on-scroll-up": "hyprctl dispatch workspace r-1",
       "on-scroll-down": "hyprctl dispatch workspace r+1",
