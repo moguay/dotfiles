@@ -77,3 +77,4 @@ tmp/
 .config/GIMP/
 
 .config/Signal/
+.config/btop/btop.log

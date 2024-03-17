@@ -26,9 +26,9 @@ fi
 
 # generate wallbash colors
 
-#if [ ! -f "${wallbashOut}" ] ; then
+if [ ! -f "${wallbashOut}" ] ; then
     $ScrDir/wallbash.sh "${wallbashImg}"
-#fi
+fi
 
 
 # deploy wallbash colors
